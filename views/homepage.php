@@ -1,4 +1,3 @@
-
   <!-- carrusel -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="homepage.php">Inicio</a></li>

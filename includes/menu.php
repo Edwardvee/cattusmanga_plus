@@ -3,7 +3,7 @@
         <div class="container-fluid">
             <div class="navbar-header">
                 <a class="navbar-brand" href="../controllers/homepage.php">
-                    <img src="../Img/cattusmangalogo.png" width="105" height="65" class="d-inline-block align-top">
+                    <img src="../img/Cattusmangalogo.png" width="105" height="65" class="d-inline-block align-top">
                 </a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#toggleNavbar" aria-controls="toggleNavbar" aria-expanded="false">

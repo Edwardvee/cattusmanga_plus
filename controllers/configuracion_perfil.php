@@ -1,7 +1,6 @@
 <?php
 session_start();
 require_once "../server/config.php";
-
 if (isset($_SESSION['datos'])) {
     $sqlUserLogged = "SELECT * 
     FROM users 

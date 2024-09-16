@@ -1,7 +1,6 @@
 <?php 	
 session_start();
-require_once "../server/config.php";
-if (isset($_POST['imgcode'])){
+require_once "../server/config.php";if (isset($_POST['imgcode'])){
 $imgcode = $_POST['imgcode'];
 $userid = $_POST['userid'];
 $sql = "SELECT * FROM users WHERE ID = " .$userid.";";

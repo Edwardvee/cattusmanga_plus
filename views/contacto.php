@@ -1,7 +1,7 @@
 <!-- Se puede mejorar -->
 <div class="container">
     <div class="container">
-        <img src="../img/Otros/gatoayuda.png" class="float-end" alt="gato te soportea">
+        <img src="../img/otros/gatoayuda.png" class="float-end" alt="gato te soportea">
         <p>Espacio de ayuda y soporte</p>
         <div class="container">
             <ul>

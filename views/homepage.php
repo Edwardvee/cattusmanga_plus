@@ -1,4 +1,6 @@
-  <!-- carrusel -->
+
+
+<!-- carrusel -->
   <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="homepage.php">Inicio</a></li>
   </ol>
@@ -6,13 +8,13 @@
   <div id="carousel" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-      <a href="../controllers/manga.php?manga=10013"><img src="../Img/Otros/ba.jpg" class="d-block w-100" alt="Baki The Grappler"></a>
+      <a href="../controllers/manga.php?manga=10013"><img src="../img/otros/ba.jpg" class="d-block w-100" alt="Baki The Grappler"></a>
       </div>
       <div class="carousel-item">
-      <a href="../controllers/manga.php?manga=10000"> <img src="../Img/Otros/wata.jpg" class="d-block w-100" alt="Watashi"></a>
+      <a href="../controllers/manga.php?manga=10000"> <img src="../img/otros/wata.jpg" class="d-block w-100" alt="Watashi"></a>
       </div>
       <div class="carousel-item">
-      <a href="../controllers/manga.php?manga=10002"> <img src="../Img/Otros/naruto-banner-test.jpg" class="d-block w-100" alt="..."></a>
+      <a href="../controllers/manga.php?manga=10002"> <img src="../img/otros/naruto-banner-test.jpg" class="d-block w-100" alt="..."></a>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
@@ -34,7 +36,7 @@
   <hr>
   <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
-    require_once "../controllers/mostviewed.php";
+        require_once "../controllers/mostviewed.php";
     ?>
   </div>
   <hr class="invisible">

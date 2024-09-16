@@ -27,7 +27,7 @@
   <div class="row row-cols-1 row-cols-md-2 ">
     <div class="col mb-3">
       <div class="shadow-sm card" style="width: 25rem;">
-        <img class="card-img-top holacat" src="../img/Otros/gatonocorona.png" alt="Card image cap">
+        <img class="card-img-top holacat" src="../img/otros/gatonocorona.png" alt="Card image cap">
         <div class="card-body align-items-stretch">
           <h5 class="card-title text-center negritotitle">Cat</h5>
           <p class="lead text-center celestito">1.99USD/mes</p>

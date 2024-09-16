@@ -114,12 +114,12 @@
             <?php if ($rowUser['badge_ID'] == 0) { ?>
               <h4 class="text-center"> Este usuario no posee ninguna insignia </h4>
             <?php } else { ?>
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
-              <img src="../Img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
+              <img src="../img/PlaceholderInsignias.png" class="insignias">
             <?php } ?>
           </div>
           <hr class="invisible">
@@ -243,12 +243,12 @@
               <?php if ($rowUser['badge_ID'] == 0) { ?>
                 <h4 class="text-center"> No posees ninguna insignia </h4>
               <?php } else { ?>
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
-                <img src="../Img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
+                <img src="../img/PlaceholderInsignias.png" class="insignias">
               <?php } ?>
             </div>
             <hr class="invisible">

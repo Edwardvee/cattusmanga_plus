@@ -2,7 +2,7 @@
     <h1>Ha ocurrido una falla técnica</h1>
     <hr/>
     <div class="container" >
-            <img src="../Img/cattusmanga_error.png" width="20%" height="20%" alt="Gato en problemas" />
+            <img src="../img/cattusmanga_error.png" width="20%" height="20%" alt="Gato en problemas" />
     </div>
     <div class="container-fluid">
         <p>Nuestros técnicos están trabajando para solucionar este inconveniente...</p>

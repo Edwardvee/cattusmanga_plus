@@ -10,7 +10,7 @@
     <a href="homepage" class="btn btn-primary"><i class="bi bi-house"></i>
       Página Principal</a>
     <div class="container d-flex justify-content-end">
-      <img src="../Img/nojao.png" width="200" alt="Gato cuestionando" />
+      <img src="../img/nojao.png" width="200" alt="Gato cuestionando" />
     </div>
   </div>
 </div>

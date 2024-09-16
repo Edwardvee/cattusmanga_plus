@@ -5,7 +5,6 @@ session_start();
 
 $userid =  $_SESSION['datos']['ID'];
 require_once "../server/config.php";
-
 $sqlmode = "SELECT nightmode FROM userprofile WHERE User_ID =". $userid .";";
 $moderesult = mysqli_query($conn, $sqlmode);
 if(!$moderesult){

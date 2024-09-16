@@ -1,5 +1,5 @@
 <div class="container">
-    <img src="../img/Otros/Bannert.png" class="mx-auto d-block" alt="banner">
+    <img src="../img/otros/Bannert.png" class="mx-auto d-block" alt="banner">
     <div class="container">
         <ol>
             <br> En Cattus Manga, para mantener una comunidad sana y sin toxicidad se debe seguir los siguientes términos de uso para poder utilizar la página de manera correcta, en caso contrario su cuenta podría ser suspendida y/o baneada de forma permanente. </br>

@@ -1,6 +1,5 @@
 <?php
-require_once "../server/config.php";
-session_start();
+require_once "../server/config.php";session_start();
 $sqlItem = "SELECT * FROM itemsshop WHERE ID = ". $_GET['itemid'].";";
 $result = mysqli_query($conn, $sqlItem);
 

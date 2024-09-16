@@ -134,7 +134,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
 
 <!--       
       <div class="anuncio1 mx-auto d-block">
-        <a href="https://www.coca-cola.com.ar/"> <img src="../Img/otros/cocacola.png"> </a>
+        <a href="https://www.coca-cola.com.ar/"> <img src="../img/otros/cocacola.png"> </a>
       </div> -->
 
       <script type="application/javascript">

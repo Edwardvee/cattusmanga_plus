@@ -222,7 +222,7 @@ if ($row_cnt > 0 || $row_cnt != NULL) {
       }
       foreach ($capitulos as $capitulos) { ?>
 
-        <article onclick="location.href='leer?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $capitulos['number']; ?>';" style="cursor: pointer">
+        <article onclick="location.href='leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $capitulos['number']; ?>';" style="cursor: pointer">
           <a href="leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $capitulos['number']; ?>"> Capítulo <?php echo $capitulos['number']; ?></a>
         </article>
       <?php }

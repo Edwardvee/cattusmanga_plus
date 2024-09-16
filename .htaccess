@@ -1,11 +1,12 @@
-ErrorDocument 404 http://dasomnya.testing.et26.edu.ar/controllers/404.php
-ErrorDocument 403 http://dasomnya.testing.et26.edu.ar/controllers/403.php
-ErrorDocument 405 http://dasomnya.testing.et26.edu.ar/controllers/405.php
-ErrorDocument 500 http://dasomnya.testing.et26.edu.ar/controllers/500.php
+ErrorDocument 404 http://http://192.168.228.131//controllers/404.php
+ErrorDocument 403 http://http://192.168.228.131//controllers/403.php
+ErrorDocument 405 http://http://192.168.228.131//controllers/405.php
+ErrorDocument 500 http://http://192.168.228.131//controllers/500.php
 
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
+
 
 
 ## RewriteCond %{THE_REQUEST} \s/+(.+?)\.php[\s?] [NC]

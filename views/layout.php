@@ -8,7 +8,7 @@
   <link href="../Css/fonts.css" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="../css/swiper-bundle.min.css">
-  <link rel="icon" type="image/x-icon" href="../Img/favicon.png">
+  <link rel="icon" type="image/x-icon" href="../img/favicon.png">
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -26,14 +26,19 @@
 
   <body class="lightmode">
   <?php } else {
+    
   require_once("../controllers/checklaymode.php");
 } ?>
   <?php require_once('../resources/checkBan.php');
   ?>
-  <?php require_once('../includes/menu.php');
+  <?php require_once('../includes/menu.php'); 
   ?>
   <div class="container">
-    <?php require_once($view . ".php") ?>
+    <?php try {
+      require("../views/". $view . ".php") ;
+    } catch (\Throwable $th) {
+      //
+    } ?>
 
   </div>
 

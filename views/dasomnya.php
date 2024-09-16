@@ -9,6 +9,6 @@
 
 <p> <h5 class=""><center>Grupo de 5 personas que buscan crear la mejor páginas de lecturas de manga. </center></h5></p>
 <br>
- <center><a href="../controllers/vtuber.php" ><img class="mb-5" src="../img/Otros/gato.png"  style="width:300px"></a></center>
+ <center><a href="../controllers/vtuber.php" ><img class="mb-5" src="../img/otros/gato.png"  style="width:300px"></a></center>
 </div>
 

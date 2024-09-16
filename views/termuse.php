@@ -1,6 +1,6 @@
 
 <div class="container">
-    <img src="../img/Otros/bannerpolitica.png" class="mx-auto d-block" alt="banner">
+    <img src="../img/otros/bannerpolitica.png" class="mx-auto d-block" alt="banner">
     <div class="container">
         <ol>
             <br> LA INFORMACIÓN QUE USTED PROPORCIONA Podemos recolectar las siguientes categorías de información de identificación personal ("Datos personales") que usted nos brinda cuando utiliza los Contenidos:</br>

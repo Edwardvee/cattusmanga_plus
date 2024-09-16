@@ -868,17 +868,17 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`ID`, `Name`, `Email`, `Password`, `profile_pic`, `activation_date`, `desactivation_date`, `reactivation_at`, `moderationRoles_ID`, `suscriptions_ID`, `email_validated`, `points`) VALUES
 (20126, 'homero93', 'gaston123@gmail.com', '$2y$10$.s22uyATwTiCeZ5fIpluSOorAkoLkoVm83wsumNfHcjBJ1h7w2Lc2', '../pointshop/anya.png', '2022-10-15 16:54:01', NULL, NULL, 1, 0, 0, 88),
 (20127, 'jijo', 'jijo@gmail.com', '$2y$10$.nz.7nnubbNKZIzwoqWrP.Yckw/wou23ERJYd1y0lv5yt5Zs8kGiq', '../pointshop/anya.png', '2022-10-16 17:34:34', NULL, NULL, 1, 0, 0, 632222),
-(20128, 'jajaja', 'hua@gmail.com', '$2y$10$W7G6sH2zy13IV.aSE.itEebIzI9pMHDqg3ZJ/935fbpjBIwgG/rsa', '../Img/avatar.png', '2022-10-16 22:00:09', NULL, '2022-11-07 11:35:57', 1, 0, 0, 85),
+(20128, 'jajaja', 'hua@gmail.com', '$2y$10$W7G6sH2zy13IV.aSE.itEebIzI9pMHDqg3ZJ/935fbpjBIwgG/rsa', '../img/avatar.png', '2022-10-16 22:00:09', NULL, '2022-11-07 11:35:57', 1, 0, 0, 85),
 (20129, 'koka', 'koka@gmail.com', '$2y$10$.uTOYWsNqorN0CbfPHw7HepyHwqn9Da.UwBRykqTXDjH7xLwjdvfW', '../pointshop/wacamole.png', '2022-10-16 22:04:57', NULL, NULL, 1, 0, 0, 10000),
-(20131, 'lukitas', 'l@gmail.com', '$2y$10$.vfWeNfW.L9rffa.QUghnuO8bMagP7p47f3uIhCF/O2xdw/wfAIna', '../Img/avatar.png', '2022-10-18 08:53:12', '2022-10-20 08:58:56', NULL, 1, 0, 0, 100),
+(20131, 'lukitas', 'l@gmail.com', '$2y$10$.vfWeNfW.L9rffa.QUghnuO8bMagP7p47f3uIhCF/O2xdw/wfAIna', '../img/avatar.png', '2022-10-18 08:53:12', '2022-10-20 08:58:56', NULL, 1, 0, 0, 100),
 (20132, 'gastontesting', 'testing@gmail.com', '$2y$10$.s22uyATwTiCeZ5fIpluSOorAkoLkoVm83wsumNfHcjBJ1h7w2Lc2', '../pointshop/anya.png', '2022-10-18 09:02:55', NULL, NULL, 1, 0, 0, 73),
-(20133, 'lolito', 'lolito@gmail.com', '$2y$10$vLBgoTMBv8/g7.Naes.BZey7mbrm8csh.cbFvfBT9Ke2buOLskD4C', '../Img/avatar.png', '2022-10-23 02:03:31', NULL, NULL, 1, 0, 0, 100),
-(20134, 'kakao1', 'kakao@gmail.com', '$2y$10$CLgv8iQVjnTuvyF4V6MpHefnZHISJyQ4drWqG0PVduhWSzOHAIBA2', '../Img/avatar.png', '2022-10-23 02:06:30', NULL, NULL, 1, 0, 0, 100),
+(20133, 'lolito', 'lolito@gmail.com', '$2y$10$vLBgoTMBv8/g7.Naes.BZey7mbrm8csh.cbFvfBT9Ke2buOLskD4C', '../img/avatar.png', '2022-10-23 02:03:31', NULL, NULL, 1, 0, 0, 100),
+(20134, 'kakao1', 'kakao@gmail.com', '$2y$10$CLgv8iQVjnTuvyF4V6MpHefnZHISJyQ4drWqG0PVduhWSzOHAIBA2', '../img/avatar.png', '2022-10-23 02:06:30', NULL, NULL, 1, 0, 0, 100),
 (20135, 'Manuel', 'Manuel@gmail.com', '$2y$10$KPtEeot8je/NR0BsYMeqJeMpVlXdnsQn5CkNxiNYGHzgXCnBl0FY6', '../pointshop/rosa.png', '2022-10-25 11:11:08', NULL, NULL, 0, 0, 0, 98277),
-(20136, 'holaqlalala', 'holaq@gmail.com', '$2y$10$9DN49.QjW7xa1SP.sYMNfO2r42msxfJg4rH1EDsSE0EiBEomu53oy', '../Img/avatar.png', '2022-10-28 17:06:31', NULL, NULL, 0, 0, 0, 100),
-(20163, 'admin', 'admin@gmail.com', '$2y$10$pPrC65O8v7Pro8nWfvw2IOKxI/uAfI9DThRy/GU7m99etdei/73mi', '../Img/avatar.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 100),
-(20164, 'ElPako', 'pakito@gmail.com', '$2y$10$gqnwlOobt2AYpf8kD4R4zu5cxdrVEh7.Ce79Juw59R2vJnV/wttfK', '../Img/avatar.png', '2022-10-31 11:38:34', NULL, NULL, 0, 0, 0, 99999),
-(20165, 'jjjiiji', 'jiji@gmail.com', '$2y$10$QVeFfL.gxfFox.mpHPxQveMqf5V1zLFj/TRy1/hLd8DPdphxlA4cK', '../Img/avatar.png', '2022-11-01 03:03:11', NULL, NULL, 0, 0, 0, 100);
+(20136, 'holaqlalala', 'holaq@gmail.com', '$2y$10$9DN49.QjW7xa1SP.sYMNfO2r42msxfJg4rH1EDsSE0EiBEomu53oy', '../img/avatar.png', '2022-10-28 17:06:31', NULL, NULL, 0, 0, 0, 100),
+(20163, 'admin', 'admin@gmail.com', '$2y$10$pPrC65O8v7Pro8nWfvw2IOKxI/uAfI9DThRy/GU7m99etdei/73mi', '../img/avatar.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 100),
+(20164, 'ElPako', 'pakito@gmail.com', '$2y$10$gqnwlOobt2AYpf8kD4R4zu5cxdrVEh7.Ce79Juw59R2vJnV/wttfK', '../img/avatar.png', '2022-10-31 11:38:34', NULL, NULL, 0, 0, 0, 99999),
+(20165, 'jjjiiji', 'jiji@gmail.com', '$2y$10$QVeFfL.gxfFox.mpHPxQveMqf5V1zLFj/TRy1/hLd8DPdphxlA4cK', '../img/avatar.png', '2022-11-01 03:03:11', NULL, NULL, 0, 0, 0, 100);
 
 --
 -- Índices para tablas volcadas

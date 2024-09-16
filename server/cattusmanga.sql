@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1deb5ubuntu1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 14-11-2022 a las 12:55:53
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Servidor: localhost:3306
+-- Tiempo de generación: 16-09-2024 a las 06:10:45
+-- Versión del servidor: 8.0.39-0ubuntu0.22.04.1
+-- Versión de PHP: 8.1.2-1ubuntu2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,12 +28,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `badges` (
-  `ID` smallint(5) UNSIGNED NOT NULL,
+  `ID` smallint UNSIGNED NOT NULL,
   `Name` varchar(64) NOT NULL,
   `description` varchar(256) DEFAULT NULL,
   `isAvaiable` tinyint(1) NOT NULL,
   `isRemoved` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -42,15 +42,15 @@ CREATE TABLE `badges` (
 --
 
 CREATE TABLE `comments` (
-  `c_ID` int(10) UNSIGNED NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
-  `Manga_ID` int(10) UNSIGNED NOT NULL,
+  `c_ID` int UNSIGNED NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
+  `Manga_ID` int UNSIGNED NOT NULL,
   `content` varchar(512) NOT NULL,
   `created_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  `mangachapter` smallint(6) DEFAULT NULL,
-  `nestedAt` smallint(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mangachapter` smallint DEFAULT NULL,
+  `nestedAt` smallint DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `comments`
@@ -77,7 +77,8 @@ INSERT INTO `comments` (`c_ID`, `User_ID`, `Manga_ID`, `content`, `created_at`, 
 (43, 20129, 10006, 'erterter', '2022-10-25 02:40:59', NULL, 7, NULL),
 (44, 20129, 10000, 'a\r\n', '2022-10-31 08:54:53', NULL, 3, NULL),
 (45, 20129, 10014, ':v\r\n', '2022-10-31 09:07:25', NULL, 2, NULL),
-(46, 20135, 10015, 'a\r\n', '2022-11-05 02:23:22', NULL, 1, NULL);
+(46, 20135, 10015, 'a\r\n', '2022-11-05 02:23:22', NULL, 1, NULL),
+(47, 20166, 10039, 'caca', '2024-09-16 06:02:53', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -86,14 +87,14 @@ INSERT INTO `comments` (`c_ID`, `User_ID`, `Manga_ID`, `content`, `created_at`, 
 --
 
 CREATE TABLE `itemsshop` (
-  `ID` mediumint(8) UNSIGNED NOT NULL,
+  `ID` mediumint UNSIGNED NOT NULL,
   `Name` varchar(64) NOT NULL,
   `Description` varchar(512) DEFAULT NULL,
-  `Price` mediumint(8) UNSIGNED NOT NULL,
+  `Price` mediumint UNSIGNED NOT NULL,
   `showitem` tinyint(1) NOT NULL,
-  `type` int(11) NOT NULL,
+  `type` int NOT NULL,
   `imgcode` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `itemsshop`
@@ -130,9 +131,9 @@ INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type
 --
 
 CREATE TABLE `itemtypes` (
-  `id` int(11) NOT NULL,
+  `id` int NOT NULL,
   `category` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `itemtypes`
@@ -150,14 +151,14 @@ INSERT INTO `itemtypes` (`id`, `category`) VALUES
 --
 
 CREATE TABLE `manga` (
-  `ID` int(10) NOT NULL,
+  `ID` int NOT NULL,
   `title` varchar(60) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `lastUpdate` date DEFAULT NULL,
   `uploadDate` datetime NOT NULL,
-  `User_ID` int(10) UNSIGNED DEFAULT NULL,
+  `User_ID` int UNSIGNED DEFAULT NULL,
   `desactivation_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `manga`
@@ -180,7 +181,9 @@ INSERT INTO `manga` (`ID`, `title`, `description`, `lastUpdate`, `uploadDate`, `
 (10014, 'Shingeki no Kyojin', 'Hace cien años, los Titanes aparecieron. Ante esta invasión, la humanidad se vio obligada a esconderse tras enormes muros para no convertirse en alimento. De esta manera los seres humanos pudieron volver a conocer la paz y la prosperidad, hasta el punto de casi olvidar la verdadera razón por la que vivían encerrados. Entonces aparece Eren Jaeger, un joven que sueña con el mundo exterior, hastiado del conformismo.', NULL, '2022-10-23 17:57:58', NULL, NULL),
 (10015, 'Kono Subarashii Sekai ni Shukufuku wo! ', 'La serie sigue a Kazuma Satō, un joven otaku que es enviado a un mundo de fantasía con elementos similares a los videojuegos MMORPG después de su muerte (en un ridículo accidente), donde se forma un grupo disfuncional con una diosa, una archimaga y una paladín.', NULL, '2022-11-01 17:57:58', NULL, NULL),
 (10016, 'Fairy Tail: Happy no Daiboken', 'En cuanto a Fairy Tail: Happy no Daiboken es un spin-off protagonizado por Happy, quien ha sido separado de Natsu y tiene que sobrevivir en un mundo lleno de animales.', '2022-11-08', '2022-11-01 17:57:58', NULL, NULL),
-(10017, 'Ijiranaide, Nagatoro-san', 'A la estudiante de preparatoria Hayase Nagatoro le encanta pasar su tiempo libre haciendo una cosa, ¡y eso es molestar a su Senpai! Después de que Nagatoro y sus amigos se toparan con los dibujos del aspirante a artista, disfrutan molestando sin piedad al tímido Senpai.', NULL, '2022-11-01 17:57:58', NULL, NULL);
+(10017, 'Ijiranaide, Nagatoro-san', 'A la estudiante de preparatoria Hayase Nagatoro le encanta pasar su tiempo libre haciendo una cosa, ¡y eso es molestar a su Senpai! Después de que Nagatoro y sus amigos se toparan con los dibujos del aspirante a artista, disfrutan molestando sin piedad al tímido Senpai.', NULL, '2022-11-01 17:57:58', NULL, NULL),
+(10038, 'Caca el tutorial', 'es una cacaa', '2024-09-16', '2024-09-16 02:55:38', 20166, NULL),
+(10039, 'fdfsd', 'fsddfs', NULL, '2024-09-16 02:58:02', 20166, NULL);
 
 -- --------------------------------------------------------
 
@@ -189,17 +192,17 @@ INSERT INTO `manga` (`ID`, `title`, `description`, `lastUpdate`, `uploadDate`, `
 --
 
 CREATE TABLE `mangachapters` (
-  `ID` int(10) UNSIGNED NOT NULL,
-  `Manga_ID` int(10) UNSIGNED NOT NULL,
+  `ID` int UNSIGNED NOT NULL,
+  `Manga_ID` int UNSIGNED NOT NULL,
   `description` varchar(512) DEFAULT NULL,
-  `number` smallint(5) UNSIGNED NOT NULL,
+  `number` smallint UNSIGNED NOT NULL,
   `uploadDate` date NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
-  `LastPagesSuscription` smallint(5) UNSIGNED NOT NULL,
-  `LastPagesPrice` smallint(5) UNSIGNED NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
+  `LastPagesSuscription` smallint UNSIGNED NOT NULL,
+  `LastPagesPrice` smallint UNSIGNED NOT NULL,
   `allow_purchase` tinyint(1) NOT NULL,
   `desactivation_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `mangachapters`
@@ -282,7 +285,9 @@ INSERT INTO `mangachapters` (`ID`, `Manga_ID`, `description`, `number`, `uploadD
 (75, 10016, NULL, 2, '2022-10-23', 20122, 0, 0, 0, NULL),
 (76, 10017, NULL, 1, '2022-10-23', 20122, 0, 0, 0, NULL),
 (77, 10017, NULL, 2, '2022-10-23', 20122, 0, 0, 0, NULL),
-(78, 10017, NULL, 3, '2022-10-23', 20122, 0, 0, 0, NULL);
+(78, 10017, NULL, 3, '2022-10-23', 20122, 0, 0, 0, NULL),
+(79, 10038, NULL, 1, '2024-09-16', 20166, 0, 0, 0, NULL),
+(80, 10039, NULL, 1, '2024-09-16', 20166, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -291,10 +296,10 @@ INSERT INTO `mangachapters` (`ID`, `Manga_ID`, `description`, `number`, `uploadD
 --
 
 CREATE TABLE `mangagenders` (
-  `g_ID` int(10) NOT NULL,
+  `g_ID` int NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `image` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `image` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `mangagenders`
@@ -307,7 +312,8 @@ INSERT INTO `mangagenders` (`g_ID`, `Name`, `image`) VALUES
 (4, 'Slice of life', 10008),
 (47, 'Luchas', 10012),
 (48, 'Peleas', 10012),
-(49, 'Yaoi', 10013);
+(49, 'Yaoi', 10013),
+(50, 'ppeee', 10038);
 
 -- --------------------------------------------------------
 
@@ -316,11 +322,11 @@ INSERT INTO `mangagenders` (`g_ID`, `Name`, `image`) VALUES
 --
 
 CREATE TABLE `mangagenders_manga` (
-  `mg_ID` int(11) NOT NULL,
-  `Manga_ID` int(10) UNSIGNED NOT NULL,
-  `MangaGenders_ID` int(10) NOT NULL,
-  `counter` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `mg_ID` int NOT NULL,
+  `Manga_ID` int UNSIGNED NOT NULL,
+  `MangaGenders_ID` int NOT NULL,
+  `counter` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `mangagenders_manga`
@@ -345,7 +351,10 @@ INSERT INTO `mangagenders_manga` (`mg_ID`, `Manga_ID`, `MangaGenders_ID`, `count
 (23, 10016, 4, 1),
 (36, 10012, 48, 1),
 (38, 10012, 47, 2),
-(39, 10013, 47, 1);
+(39, 10013, 47, 1),
+(41, 10038, 2, 1),
+(42, 10038, 50, 2),
+(43, 10039, 50, 1);
 
 -- --------------------------------------------------------
 
@@ -354,11 +363,11 @@ INSERT INTO `mangagenders_manga` (`mg_ID`, `Manga_ID`, `MangaGenders_ID`, `count
 --
 
 CREATE TABLE `mangalikes` (
-  `id` int(10) NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
-  `manga_id` int(10) NOT NULL,
+  `id` int NOT NULL,
+  `user_id` int UNSIGNED NOT NULL,
+  `manga_id` int NOT NULL,
   `LikeOrDislike` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `mangalikes`
@@ -377,7 +386,8 @@ INSERT INTO `mangalikes` (`id`, `user_id`, `manga_id`, `LikeOrDislike`) VALUES
 (22, 20131, 10009, NULL),
 (24, 20131, 10006, NULL),
 (25, 20129, 10000, NULL),
-(26, 20129, 10012, NULL);
+(26, 20129, 10012, NULL),
+(27, 20166, 10012, NULL);
 
 -- --------------------------------------------------------
 
@@ -386,9 +396,9 @@ INSERT INTO `mangalikes` (`id`, `user_id`, `manga_id`, `LikeOrDislike`) VALUES
 --
 
 CREATE TABLE `mangaviews` (
-  `manga_ID` int(11) NOT NULL,
-  `views_count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `manga_ID` int NOT NULL,
+  `views_count` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `mangaviews`
@@ -397,21 +407,23 @@ CREATE TABLE `mangaviews` (
 INSERT INTO `mangaviews` (`manga_ID`, `views_count`) VALUES
 (10000, 14),
 (10001, 1),
-(10002, 3),
-(10003, 2),
+(10002, 4),
+(10003, 3),
 (10004, 2),
-(10005, 2),
+(10005, 3),
 (10006, 3),
 (10007, 2),
 (10008, 3),
 (10009, 1),
 (10010, 3),
-(10012, 4),
+(10012, 5),
 (10013, 2),
 (10014, 3),
-(10016, 0),
-(10015, 0),
-(10017, 2);
+(10016, 1),
+(10015, 2),
+(10017, 3),
+(10038, 1),
+(10039, 1);
 
 -- --------------------------------------------------------
 
@@ -420,10 +432,10 @@ INSERT INTO `mangaviews` (`manga_ID`, `views_count`) VALUES
 --
 
 CREATE TABLE `manga_unique_view` (
-  `v_ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `manga_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `v_ID` int NOT NULL,
+  `user_ID` int NOT NULL,
+  `manga_ID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `manga_unique_view`
@@ -463,7 +475,17 @@ INSERT INTO `manga_unique_view` (`v_ID`, `user_ID`, `manga_ID`) VALUES
 (35, 20129, 10018),
 (36, 20129, 1009),
 (37, 20129, 10016),
-(38, 20129, 10017);
+(38, 20129, 10017),
+(39, 20163, 10003),
+(40, 20163, 10002),
+(41, 20163, 10015),
+(42, 20163, 10016),
+(43, 20166, 10012),
+(44, 20166, 10038),
+(45, 20166, 10017),
+(46, 20166, 10005),
+(47, 20166, 10039),
+(48, 20166, 10015);
 
 -- --------------------------------------------------------
 
@@ -472,14 +494,14 @@ INSERT INTO `manga_unique_view` (`v_ID`, `user_ID`, `manga_ID`) VALUES
 --
 
 CREATE TABLE `moderationlogcomment` (
-  `MC_ID` int(10) UNSIGNED NOT NULL,
-  `comments_ID` int(10) UNSIGNED NOT NULL,
-  `user_ID` int(10) UNSIGNED NOT NULL,
-  `af_user` int(11) NOT NULL,
+  `MC_ID` int UNSIGNED NOT NULL,
+  `comments_ID` int UNSIGNED NOT NULL,
+  `user_ID` int UNSIGNED NOT NULL,
+  `af_user` int NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `moderationlogcomment`
@@ -496,13 +518,13 @@ INSERT INTO `moderationlogcomment` (`MC_ID`, `comments_ID`, `user_ID`, `af_user`
 --
 
 CREATE TABLE `moderationlogmanga` (
-  `ID` int(10) NOT NULL,
-  `Manga_ID` int(10) UNSIGNED NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
+  `ID` int NOT NULL,
+  `Manga_ID` int UNSIGNED NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -511,13 +533,13 @@ CREATE TABLE `moderationlogmanga` (
 --
 
 CREATE TABLE `moderationlogmangachapters` (
-  `ID` int(10) NOT NULL,
-  `MangaChapters_ID` int(10) UNSIGNED NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
+  `ID` int NOT NULL,
+  `MangaChapters_ID` int UNSIGNED NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -526,13 +548,13 @@ CREATE TABLE `moderationlogmangachapters` (
 --
 
 CREATE TABLE `moderationlogusers` (
-  `ID` int(10) NOT NULL,
-  `Affected_User_ID` int(10) NOT NULL,
-  `User_ID` int(10) NOT NULL,
+  `ID` int NOT NULL,
+  `Affected_User_ID` int NOT NULL,
+  `User_ID` int NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
+  `moderationStatus_ID` tinyint UNSIGNED NOT NULL DEFAULT '1',
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `moderationlogusers`
@@ -550,10 +572,10 @@ INSERT INTO `moderationlogusers` (`ID`, `Affected_User_ID`, `User_ID`, `date`, `
 --
 
 CREATE TABLE `moderationstatus` (
-  `ID` tinyint(3) NOT NULL,
+  `ID` tinyint NOT NULL,
   `Name` varchar(40) DEFAULT NULL,
   `show2` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `moderationstatus`
@@ -570,13 +592,13 @@ INSERT INTO `moderationstatus` (`ID`, `Name`, `show2`) VALUES
 --
 
 CREATE TABLE `permissionssuscriptions` (
-  `suscriptions_ID` tinyint(3) UNSIGNED NOT NULL,
+  `suscriptions_ID` tinyint UNSIGNED NOT NULL,
   `pointMultiplier` float DEFAULT NULL,
   `allAccess` tinyint(1) NOT NULL,
   `uploadManga` tinyint(1) NOT NULL,
   `bypassMangaValidation` tinyint(1) NOT NULL,
   `promotedMangas` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -585,10 +607,10 @@ CREATE TABLE `permissionssuscriptions` (
 --
 
 CREATE TABLE `profiles` (
-  `id` int(10) NOT NULL,
-  `role_id` int(10) NOT NULL,
-  `user_id` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `id` int NOT NULL,
+  `role_id` int NOT NULL,
+  `user_id` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `profiles`
@@ -603,6 +625,7 @@ INSERT INTO `profiles` (`id`, `role_id`, `user_id`) VALUES
 (7, 2, 20136),
 (26, 2, 20164),
 (27, 2, 20165),
+(28, 2, 20166),
 (2, 3, 20127),
 (5, 3, 20132),
 (4, 4, 20126),
@@ -616,9 +639,9 @@ INSERT INTO `profiles` (`id`, `role_id`, `user_id`) VALUES
 --
 
 CREATE TABLE `roles` (
-  `id` int(10) NOT NULL,
+  `id` int NOT NULL,
   `name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -637,13 +660,13 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `rolespermissions` (
-  `id` int(10) NOT NULL,
-  `roles_id` int(10) NOT NULL,
+  `id` int NOT NULL,
+  `roles_id` int NOT NULL,
   `reviewComments` tinyint(1) NOT NULL,
   `editComments` tinyint(1) NOT NULL,
   `reviewMangas` tinyint(1) NOT NULL,
   `editMangas` tinyint(1) NOT NULL,
-  `delayActions` smallint(5) UNSIGNED DEFAULT NULL,
+  `delayActions` smallint UNSIGNED DEFAULT NULL,
   `reviewUsers` tinyint(1) NOT NULL,
   `editUsers` tinyint(1) NOT NULL,
   `viewModerationLog` tinyint(1) NOT NULL,
@@ -652,7 +675,7 @@ CREATE TABLE `rolespermissions` (
   `editSuscription` tinyint(1) NOT NULL,
   `editModeration` tinyint(1) NOT NULL,
   `modifyShop` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `rolespermissions`
@@ -671,9 +694,9 @@ INSERT INTO `rolespermissions` (`id`, `roles_id`, `reviewComments`, `editComment
 --
 
 CREATE TABLE `suscriptions` (
-  `ID` tinyint(3) NOT NULL,
+  `ID` tinyint NOT NULL,
   `Name` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `suscriptions`
@@ -691,11 +714,11 @@ INSERT INTO `suscriptions` (`ID`, `Name`) VALUES
 --
 
 CREATE TABLE `userbadges` (
-  `User_ID` int(10) UNSIGNED NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
   `purchaseDate` datetime NOT NULL,
   `expirationDate` datetime DEFAULT NULL,
-  `badge_ID` smallint(5) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `badge_ID` smallint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -704,10 +727,10 @@ CREATE TABLE `userbadges` (
 --
 
 CREATE TABLE `userinventory` (
-  `ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `item_ID` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `ID` int NOT NULL,
+  `user_ID` int NOT NULL,
+  `item_ID` int NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `userinventory`
@@ -755,7 +778,9 @@ INSERT INTO `userinventory` (`ID`, `user_ID`, `item_ID`) VALUES
 (39, 20135, 1),
 (40, 20129, 11),
 (41, 20129, 22),
-(42, 20135, 3);
+(42, 20135, 3),
+(43, 20163, 5),
+(44, 20166, 1);
 
 -- --------------------------------------------------------
 
@@ -764,12 +789,12 @@ INSERT INTO `userinventory` (`ID`, `user_ID`, `item_ID`) VALUES
 --
 
 CREATE TABLE `userpointhistory` (
-  `ID` bigint(20) NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
+  `ID` bigint NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
   `Date` datetime NOT NULL,
   `Action` varchar(150) DEFAULT NULL,
   `AddedBy` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
@@ -778,17 +803,17 @@ CREATE TABLE `userpointhistory` (
 --
 
 CREATE TABLE `userprofile` (
-  `User_ID` int(10) NOT NULL,
+  `User_ID` int NOT NULL,
   `nightmode` varchar(5) NOT NULL,
   `show_Badges` tinyint(1) NOT NULL,
-  `favourite_manga_ID` int(10) UNSIGNED DEFAULT NULL,
+  `favourite_manga_ID` int UNSIGNED DEFAULT NULL,
   `show_favourite` enum('Si','No') NOT NULL DEFAULT 'No',
   `show_likes` enum('Si','No') NOT NULL DEFAULT 'No',
   `description` varchar(500) DEFAULT NULL,
   `show_interests` tinyint(1) NOT NULL,
   `show_role` tinyint(1) NOT NULL,
-  `bg_dir` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `bg_dir` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `userprofile`
@@ -808,7 +833,8 @@ INSERT INTO `userprofile` (`User_ID`, `nightmode`, `show_Badges`, `favourite_man
 (20136, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
 (20163, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
 (20164, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
-(20165, 'on', 1, NULL, 'Si', 'Si', '', 1, 0, NULL);
+(20165, 'on', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
+(20166, 'off', 1, 10012, 'Si', 'Si', '', 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -817,11 +843,11 @@ INSERT INTO `userprofile` (`User_ID`, `nightmode`, `show_Badges`, `favourite_man
 --
 
 CREATE TABLE `userreadmangahistory` (
-  `h_ID` int(11) NOT NULL,
-  `User_ID` int(10) UNSIGNED NOT NULL,
-  `manga_ID` int(15) UNSIGNED NOT NULL,
-  `at_Chapter` smallint(5) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `h_ID` int NOT NULL,
+  `User_ID` int UNSIGNED NOT NULL,
+  `manga_ID` int UNSIGNED NOT NULL,
+  `at_Chapter` smallint UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `userreadmangahistory`
@@ -838,7 +864,13 @@ INSERT INTO `userreadmangahistory` (`h_ID`, `User_ID`, `manga_ID`, `at_Chapter`)
 (12, 20127, 10008, 215),
 (13, 20127, 10000, 1),
 (14, 20127, 10006, 7),
-(15, 20135, 10015, 1);
+(15, 20135, 10015, 1),
+(16, 20163, 10015, 3),
+(17, 20163, 10016, 2),
+(18, 20166, 10017, 2),
+(19, 20166, 10012, 4),
+(20, 20166, 10039, 1),
+(21, 20166, 10005, 1);
 
 -- --------------------------------------------------------
 
@@ -847,7 +879,7 @@ INSERT INTO `userreadmangahistory` (`h_ID`, `User_ID`, `manga_ID`, `at_Chapter`)
 --
 
 CREATE TABLE `users` (
-  `ID` int(10) NOT NULL,
+  `ID` int NOT NULL,
   `Name` varchar(20) NOT NULL,
   `Email` varchar(64) NOT NULL,
   `Password` varchar(200) NOT NULL,
@@ -855,11 +887,11 @@ CREATE TABLE `users` (
   `activation_date` datetime NOT NULL,
   `desactivation_date` datetime DEFAULT NULL,
   `reactivation_at` datetime DEFAULT NULL,
-  `moderationRoles_ID` tinyint(3) UNSIGNED NOT NULL,
-  `suscriptions_ID` tinyint(3) UNSIGNED NOT NULL,
-  `email_validated` tinyint(3) UNSIGNED NOT NULL,
-  `points` mediumint(9) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  `moderationRoles_ID` tinyint UNSIGNED NOT NULL DEFAULT '0',
+  `suscriptions_ID` tinyint UNSIGNED NOT NULL,
+  `email_validated` tinyint UNSIGNED NOT NULL,
+  `points` mediumint NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Volcado de datos para la tabla `users`
@@ -876,9 +908,10 @@ INSERT INTO `users` (`ID`, `Name`, `Email`, `Password`, `profile_pic`, `activati
 (20134, 'kakao1', 'kakao@gmail.com', '$2y$10$CLgv8iQVjnTuvyF4V6MpHefnZHISJyQ4drWqG0PVduhWSzOHAIBA2', '../img/avatar.png', '2022-10-23 02:06:30', NULL, NULL, 1, 0, 0, 100),
 (20135, 'Manuel', 'Manuel@gmail.com', '$2y$10$KPtEeot8je/NR0BsYMeqJeMpVlXdnsQn5CkNxiNYGHzgXCnBl0FY6', '../pointshop/rosa.png', '2022-10-25 11:11:08', NULL, NULL, 0, 0, 0, 98277),
 (20136, 'holaqlalala', 'holaq@gmail.com', '$2y$10$9DN49.QjW7xa1SP.sYMNfO2r42msxfJg4rH1EDsSE0EiBEomu53oy', '../img/avatar.png', '2022-10-28 17:06:31', NULL, NULL, 0, 0, 0, 100),
-(20163, 'admin', 'admin@gmail.com', '$2y$10$pPrC65O8v7Pro8nWfvw2IOKxI/uAfI9DThRy/GU7m99etdei/73mi', '../img/avatar.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 100),
+(20163, 'admin', 'admin@gmail.com', '$2y$10$pPrC65O8v7Pro8nWfvw2IOKxI/uAfI9DThRy/GU7m99etdei/73mi', '../pointshop/berserk.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 1007587),
 (20164, 'ElPako', 'pakito@gmail.com', '$2y$10$gqnwlOobt2AYpf8kD4R4zu5cxdrVEh7.Ce79Juw59R2vJnV/wttfK', '../img/avatar.png', '2022-10-31 11:38:34', NULL, NULL, 0, 0, 0, 99999),
-(20165, 'jjjiiji', 'jiji@gmail.com', '$2y$10$QVeFfL.gxfFox.mpHPxQveMqf5V1zLFj/TRy1/hLd8DPdphxlA4cK', '../img/avatar.png', '2022-11-01 03:03:11', NULL, NULL, 0, 0, 0, 100);
+(20165, 'jjjiiji', 'jiji@gmail.com', '$2y$10$QVeFfL.gxfFox.mpHPxQveMqf5V1zLFj/TRy1/hLd8DPdphxlA4cK', '../img/avatar.png', '2022-11-01 03:03:11', NULL, NULL, 0, 0, 0, 100),
+(20166, 'poooprr', 'pepe@pepe.com', '$2y$10$BmhczkyUlWr9mI8rOkcWjeOWirYOZYX2BJsRWUya8AMveV0AP9LAG', '../pointshop/booba.png', '2024-09-16 05:52:46', NULL, NULL, 0, 0, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -1074,133 +1107,133 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `c_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `c_ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `itemsshop`
 --
 ALTER TABLE `itemsshop`
-  MODIFY `ID` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` mediumint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT de la tabla `itemtypes`
 --
 ALTER TABLE `itemtypes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `manga`
 --
 ALTER TABLE `manga`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10038;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10040;
 
 --
 -- AUTO_INCREMENT de la tabla `mangachapters`
 --
 ALTER TABLE `mangachapters`
-  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=79;
+  MODIFY `ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
 
 --
 -- AUTO_INCREMENT de la tabla `mangagenders`
 --
 ALTER TABLE `mangagenders`
-  MODIFY `g_ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `g_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `mangagenders_manga`
 --
 ALTER TABLE `mangagenders_manga`
-  MODIFY `mg_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `mg_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `mangalikes`
 --
 ALTER TABLE `mangalikes`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `manga_unique_view`
 --
 ALTER TABLE `manga_unique_view`
-  MODIFY `v_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `v_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogcomment`
 --
 ALTER TABLE `moderationlogcomment`
-  MODIFY `MC_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `MC_ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogmanga`
 --
 ALTER TABLE `moderationlogmanga`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogmangachapters`
 --
 ALTER TABLE `moderationlogmangachapters`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogusers`
 --
 ALTER TABLE `moderationlogusers`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationstatus`
 --
 ALTER TABLE `moderationstatus`
-  MODIFY `ID` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rolespermissions`
 --
 ALTER TABLE `rolespermissions`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `suscriptions`
 --
 ALTER TABLE `suscriptions`
-  MODIFY `ID` tinyint(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `userinventory`
 --
 ALTER TABLE `userinventory`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT de la tabla `userpointhistory`
 --
 ALTER TABLE `userpointhistory`
-  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `userreadmangahistory`
 --
 ALTER TABLE `userreadmangahistory`
-  MODIFY `h_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `h_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20166;
+  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20167;
 
 --
 -- Restricciones para tablas volcadas

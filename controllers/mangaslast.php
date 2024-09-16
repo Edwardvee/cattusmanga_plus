@@ -3,7 +3,7 @@ require_once "../server/config.php";require_once "../server/check_user_logged.ph
 require_once "../views/layout.php";
 require_once '../server/mysqli_connector.php';
 
-$sqllast = "SELECT * FROM manga INNER JOIN userreadmangahistory ON userreadmangahistory.manga_ID = manga.ID WHERE userreadmangahistory.User_ID  =". $_SESSION['datos']['ID'] ." ORDER BY h_ID ASC ;";
+$sqllast = "SELECT * FROM manga INNER JOIN userreadmangahistory ON userreadmangahistory.manga_ID = manga.ID WHERE userreadmangahistory.User_ID  =". $_SESSION['datos']['ID'] ." ORDER BY h_ID DESC ;";
 $resultlast = mysqli_query($conn, $sqllast);
 $mangaslast = array();
 if (mysqli_num_rows($resultlast) > 0) {

@@ -2,15 +2,6 @@
 if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
   echo "No disponible";
 } else {
-
-  $chapterget = mysqli_real_escape_string($conn, $_GET['capitulo']);
-  $mangaget = mysqli_real_escape_string($conn, $_GET['manga']);
-  $chkchapter = "SELECT * FROM mangachapters WHERE Manga_ID = '$mangaget' AND number = '$chapterget';";
-  $chaptergetresult = mysqli_query($conn, $chkchapter);
-  $verifychapters = mysqli_num_rows($chaptergetresult);
-
- 
-
   if ($verifychapters < 1) { ?>
     Capítulo no disponible
     <?php } else {
@@ -24,74 +15,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
     if (isset($_GET['manga']) == NULL || isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
       echo "No disponible";
     } else {
-
-
-      if (isset($_SESSION['datos']['ID'])) {
-        $sqlUMH = "SELECT * FROM userreadmangahistory WHERE User_ID =" . $_SESSION['datos']['ID'] . ";";
-        $resultsHistory = mysqli_query($conn, $sqlUMH);
-        $rCheck = mysqli_num_rows($resultsHistory);
-        $lastindex = array();
-        if (mysqli_num_rows($resultsHistory) > 0) {
-          while ($row = mysqli_fetch_assoc($resultsHistory)) {
-            $lastindex[] = $row;
-          }
-        }
-
-        if ($rCheck >= 4) {
-          $userid = $_SESSION['datos']['ID'];
-          $mangaid = $_GET['manga'];
-          $atchapter = $_GET['capitulo'];
-
-          $index0 = $lastindex[0]['h_ID'];
-          $index1 = $lastindex[1]['h_ID'];
-          $index2 = $lastindex[2]['h_ID'];
-          $index3 = $lastindex[3]['h_ID'];
-
-          $manga0 = $lastindex[0]['manga_ID'];
-          $manga1 = $lastindex[1]['manga_ID'];
-          $manga2 = $lastindex[2]['manga_ID'];
-          $manga3 = $lastindex[3]['manga_ID'];
-
-          $chapter0 = $lastindex[0]['at_Chapter'];
-          $chapter1 = $lastindex[1]['at_Chapter'];
-          $chapter2 = $lastindex[2]['at_Chapter'];
-          $chapter3 = $lastindex[3]['at_Chapter'];
-
-          $sqlChecker = "SELECT * FROM userreadmangahistory WHERE manga_ID = $mangaid AND User_ID = $userid";
-          $rchecker = mysqli_query($conn, $sqlChecker);
-          $mangaisseen = mysqli_num_rows($rchecker);
-          if ($mangaisseen == NULL || $mangaisseen == 0) {
-            $sqlSave = "UPDATE userreadmangahistory SET manga_ID = $manga0, at_Chapter = $chapter0 WHERE User_ID = $userid AND h_ID = $index1;UPDATE userreadmangahistory SET manga_ID = $mangaid, at_Chapter = $atchapter WHERE User_ID = $userid AND h_ID = $index0; UPDATE userreadmangahistory SET manga_ID = $manga2, at_Chapter = $chapter2 WHERE User_ID = $userid AND manga_ID = $manga3 AND h_ID = $index3 ; UPDATE userreadmangahistory SET manga_ID = $manga1, at_Chapter = $chapter1 WHERE User_ID = $userid AND manga_ID = $manga2 AND h_ID = $index2";
-            $resultsSave = mysqli_multi_query($conn, $sqlSave);
-            while (mysqli_next_result($conn)) {;
-            };
-          }
-
-          if ($mangaisseen != NULL || $mangaisseen != 0) {
-
-            $sqloverwrite = "UPDATE userreadmangahistory SET at_Chapter = $atchapter WHERE User_ID = $userid AND manga_ID = $mangaid;";
-            $resultsoverwrite = mysqli_query($conn, $sqloverwrite);
-          }
-        }
-        if ($rCheck < 4 || $rCheck == NULL || $rCheck == 0) {
-
-          $userid = $_SESSION['datos']['ID'];
-          $mangaid = $_GET['manga'];
-          $atchapter = $_GET['capitulo'];
-          $sqlChecker = "SELECT * FROM userreadmangahistory WHERE manga_ID = $mangaid AND User_ID = $userid";
-          $rchecker = mysqli_query($conn, $sqlChecker);
-          $mangaisseen = mysqli_num_rows($rchecker);
-          if ($mangaisseen == NULL || $mangaisseen == 0) {
-            $sqlHcreate = "INSERT INTO userreadmangahistory (User_ID, manga_ID, at_Chapter)
-            VALUES ($userid, $mangaid, $atchapter);";
-            $resultsHcreate = mysqli_query($conn, $sqlHcreate);
-          }
-          if ($mangaisseen != NULL || $mangaisseen != 0) {
-            $sqlSave = "UPDATE userreadmangahistory SET manga_ID = $mangaid, at_Chapter = $atchapter WHERE User_ID = $userid AND manga_ID = $mangaid;";
-            $resultsSave = mysqli_query($conn, $sqlSave);
-          }
-        }
-      }  ?>
+  ?>
       <div class="container">
         <center><button type="button" id="back" class="btn btn-primary" <?php if ($_GET['capitulo'] == 1) { ?> disabled <?php   } ?> onclick="window.location.href = 'leer?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] - 1; ?>';">
             <i class="bi bi-skip-backward"></i>

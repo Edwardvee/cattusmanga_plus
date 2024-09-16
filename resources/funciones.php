@@ -201,7 +201,7 @@ function logInUser($conn, $username, $pwd, $remember)
 	}
 }
 
-function editUser($conn, $id, $email, $username, $dscdate, $points, $pwd, $role_user,$page)
+function editUser($conn, $id, $email, $username, $dscdate, $points, $pwd, $role_user, $page)
 {
 	$getuser = "SELECT * FROM users WHERE ID = '$id';";
 	$gtresult = mysqli_query($conn, $getuser);
@@ -236,12 +236,12 @@ function editUser($conn, $id, $email, $username, $dscdate, $points, $pwd, $role_
 			return false;
 		}
 	}
-	header("Location: ../moderacion.php?section=administration&roles=todos&page=".$page."&error=none1");
+	header("Location: ../moderacion.php?section=administration&roles=todos&page=" . $page . "&error=none1");
 }
 
 
 
-function uploadmanga($conn, $titulo, $descripcion, $categorias, $fecha,$file,$chapters )
+function uploadmanga($conn, $titulo, $descripcion, $categorias, $fecha, $file, $chapters)
 {
 
 
@@ -261,7 +261,7 @@ function uploadmanga($conn, $titulo, $descripcion, $categorias, $fecha,$file,$ch
 		}
 		$mangaid = $dataid[0]['ID'];
 		$sqlupdtgnr = "INSERT INTO mangagenders_manga(Manga_ID, MangaGenders_ID, counter) VALUES($mangaid, $categorias, 1); INSERT INTO mangaviews (manga_ID, views_count) VALUES($mangaid, 0);INSERT INTO mangachapters(Manga_ID, description, number, uploadDate, User_ID, LastPagesSuscription, LastPagesPrice, allow_purchase, desactivation_date) VALUES ($mangaid, NULL, 1, '$fecha', " . $_SESSION['datos']['ID'] . ",0, 0, 0, NULL);";
-		
+
 		$file = $_FILES['caratula'];
 		$chapters = $_FILES['chapters'];
 		$resultgnr = mysqli_multi_query($conn, $sqlupdtgnr);
@@ -270,39 +270,108 @@ function uploadmanga($conn, $titulo, $descripcion, $categorias, $fecha,$file,$ch
 		$filerror = $_FILES['caratula']['error'];
 		$filetype = $_FILES['caratula']['type'];
 		$filesize = $_FILES['caratula']['size'];
-	
-		$fileext = explode('.',$filename);
+
+		$fileext = explode('.', $filename);
 		$filenewext = strtolower(end($fileext));
-	
-		$allowed = array('png','jpeg','jpg');
-	
+
+		$allowed = array('png', 'jpeg', 'jpg');
+
 		mkdir("../mangas/" . $mangaid, 0700);
 		mkdir("../mangas/" . $mangaid . "/1", 0700);
-		$filedestination = "../mangas/".$mangaid."/".$fileext[0].".".$filenewext;
-		move_uploaded_file($filetmpname,$filedestination);
+		$filedestination = "../mangas/" . $mangaid . "/" . $fileext[0] . "." . $filenewext;
+		move_uploaded_file($filetmpname, $filedestination);
 		sleep(1);
-		rename("../mangas/".$mangaid."/".$filename, "../mangas/".$mangaid."/caratula.png");
+		rename("../mangas/" . $mangaid . "/" . $filename, "../mangas/" . $mangaid . "/caratula.png");
 
-		
+
 		$crror = $_FILES['chapters']['error'];
 		$ctype = $_FILES['chapters']['type'];
 		$csize = $_FILES['chapters']['size'];
 
 		$allowed = array('jpg');
-$totalchp =	count($_FILES['chapters']['name']);
-for($i=0;$i<=$totalchp;$i++){	
-	$cname = $_FILES['chapters']['name'][$i];
-	$cext = explode('.',$cname);
-	$cnewext = strtolower(end($cext));
-	$ctmpname = $_FILES['chapters']['tmp_name'][$i];
+		$totalchp =	count($_FILES['chapters']['name']);
+		for ($i = 0; $i <= $totalchp; $i++) {
+			$cname = $_FILES['chapters']['name'][$i];
+			$cext = explode('.', $cname);
+			$cnewext = strtolower(end($cext));
+			$ctmpname = $_FILES['chapters']['tmp_name'][$i];
 
-		$cdestination = "../mangas/".$mangaid."/1/".$cext[0].".".$cnewext;
-		move_uploaded_file($ctmpname,$cdestination);
-		sleep(1);
-		$ii = $i+1;
-		rename("../mangas/".$mangaid."/1/".$cname, "../mangas/".$mangaid."/1/".$ii.".jpg");
+			$cdestination = "../mangas/" . $mangaid . "/1/" . $cext[0] . "." . $cnewext;
+			move_uploaded_file($ctmpname, $cdestination);
+			sleep(1);
+			$ii = $i + 1;
+			rename("../mangas/" . $mangaid . "/1/" . $cname, "../mangas/" . $mangaid . "/1/" . $ii . ".jpg");
+		}
+		header("location: ../controllers/manga.php?manga=" . $mangaid);
+	}
+}
 
-}
-header("location: ../controllers/manga.php?manga=".$mangaid);
-}
+
+function UserLastSeen($conn, $sessionid)
+{
+		$sqlUMH = "SELECT * FROM userreadmangahistory WHERE User_ID =" . $sessionid . "  ORDER BY h_ID DESC;";
+		$resultsHistory = mysqli_query($conn, $sqlUMH);
+		$rCheck = mysqli_num_rows($resultsHistory);
+		$lastindex = array();
+		if (mysqli_num_rows($resultsHistory) > 0) {
+			while ($row = mysqli_fetch_assoc($resultsHistory)) {
+				$lastindex[] = $row;
+			}
+		}
+
+		if ($rCheck >= 4) {
+			$userid = $sessionid;
+			$mangaid = $_GET['manga'];
+			$atchapter = $_GET['capitulo'];
+
+			$index0 = $lastindex[0]['h_ID'];
+			$index1 = $lastindex[1]['h_ID'];
+			$index2 = $lastindex[2]['h_ID'];
+			$index3 = $lastindex[3]['h_ID'];
+
+			$manga0 = $lastindex[0]['manga_ID'];
+			$manga1 = $lastindex[1]['manga_ID'];
+			$manga2 = $lastindex[2]['manga_ID'];
+			$manga3 = $lastindex[3]['manga_ID'];
+
+			$chapter0 = $lastindex[0]['at_Chapter'];
+			$chapter1 = $lastindex[1]['at_Chapter'];
+			$chapter2 = $lastindex[2]['at_Chapter'];
+			$chapter3 = $lastindex[3]['at_Chapter'];
+
+			$sqlChecker = "SELECT * FROM userreadmangahistory WHERE manga_ID = $mangaid AND User_ID = $userid";
+			$rchecker = mysqli_query($conn, $sqlChecker);
+			$mangaisseen = mysqli_num_rows($rchecker);
+			if ($mangaisseen == NULL || $mangaisseen == 0) {
+				$sqlSave = "UPDATE userreadmangahistory SET manga_ID = $mangaid, at_Chapter = $atchapter WHERE User_ID = $userid AND h_ID = $index0;UPDATE userreadmangahistory SET manga_ID = $manga0, at_Chapter = $chapter0 WHERE User_ID = $userid AND h_ID = $index1; UPDATE userreadmangahistory SET manga_ID = $manga1, at_Chapter = $chapter1 WHERE User_ID = $userid AND h_ID = $index2 ; UPDATE userreadmangahistory SET manga_ID = $manga2, at_Chapter = $chapter2 WHERE User_ID = $userid  AND h_ID = $index3";
+				$resultsSave = mysqli_multi_query($conn, $sqlSave);
+				while (mysqli_next_result($conn)) {;
+				};
+			}
+
+			if ($mangaisseen != NULL || $mangaisseen != 0) {
+
+				$sqloverwrite = "UPDATE userreadmangahistory SET at_Chapter = $atchapter WHERE User_ID = $userid AND manga_ID = $mangaid;";
+				$resultsoverwrite = mysqli_query($conn, $sqloverwrite);
+			}
+		}
+		if ($rCheck < 4 || $rCheck == NULL || $rCheck == 0) {
+
+			$userid = $sessionid;
+			$mangaid = $_GET['manga'];
+			$atchapter = $_GET['capitulo'];
+			$sqlChecker = "SELECT * FROM userreadmangahistory WHERE manga_ID = $mangaid AND User_ID = $userid";
+			$rchecker = mysqli_query($conn, $sqlChecker);
+			$mangaisseen = mysqli_num_rows($rchecker);
+			if ($mangaisseen == NULL || $mangaisseen == 0) {
+				$sqlHcreate = "INSERT INTO userreadmangahistory (User_ID, manga_ID, at_Chapter)
+            VALUES ($userid, $mangaid, $atchapter);";
+				$resultsHcreate = mysqli_query($conn, $sqlHcreate);
+			}
+			if ($mangaisseen != NULL || $mangaisseen != 0) {
+				$sqlSave = "UPDATE userreadmangahistory SET manga_ID = $mangaid, at_Chapter = $atchapter WHERE User_ID = $userid AND manga_ID = $mangaid;";
+				$resultsSave = mysqli_query($conn, $sqlSave);
+			}
+		}
+	
 }

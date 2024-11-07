@@ -1,5 +1,6 @@
 <?php
-require_once "../server/config.php";require_once "../server/check_user_logged.php";
+require_once "../server/config.php";
+require_once "../server/check_user_logged.php";
 require_once "../views/layout.php";
 require_once '../server/mysqli_connector.php';
 

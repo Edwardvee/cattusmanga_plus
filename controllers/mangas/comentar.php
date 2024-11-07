@@ -5,9 +5,9 @@ require_once("../../server/config.php");
 if(isset($_POST) & !empty($_POST)){
 	
 	$userid =  $_SESSION['datos']['ID'];
-	$comment = mysqli_real_escape_string($conn ,$_POST['comment']);
-	$atmanga = $_GET['manga'];
-    $atchapter = $_GET['capitulo'];
+	$comment = mysqli_real_escape_string($conn ,$_POST['comentario']);
+	$atmanga = $_POST['manga'];
+    $atchapter = $_POST['capitulo'];
 
  	$isql = "INSERT INTO comments (User_ID, Manga_ID, content, created_at, deleted_at, mangachapter, nestedAt) VALUES(".$userid.",".$atmanga.",'".$comment."',NOW(),NULL,".$atchapter.",NULL);";
 

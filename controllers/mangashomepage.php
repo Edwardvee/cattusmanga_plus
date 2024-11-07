@@ -1,5 +1,4 @@
 <?php
-require_once "../views/layout.php";
 require_once '../server/mysqli_connector.php';
 $limitator = 20;
 $sql = "SELECT * FROM manga ORDER BY ID DESC LIMIT " . $limitator . ";";

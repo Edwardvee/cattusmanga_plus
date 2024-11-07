@@ -33,7 +33,7 @@ CREATE TABLE `badges` (
   `description` varchar(256) DEFAULT NULL,
   `isAvaiable` tinyint(1) NOT NULL,
   `isRemoved` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -50,7 +50,7 @@ CREATE TABLE `comments` (
   `deleted_at` datetime DEFAULT NULL,
   `mangachapter` smallint DEFAULT NULL,
   `nestedAt` smallint DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `comments`
@@ -94,7 +94,7 @@ CREATE TABLE `itemsshop` (
   `showitem` tinyint(1) NOT NULL,
   `type` int NOT NULL,
   `imgcode` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `itemsshop`
@@ -133,7 +133,7 @@ INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type
 CREATE TABLE `itemtypes` (
   `id` int NOT NULL,
   `category` varchar(25) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `itemtypes`
@@ -158,7 +158,7 @@ CREATE TABLE `manga` (
   `uploadDate` datetime NOT NULL,
   `User_ID` int UNSIGNED DEFAULT NULL,
   `desactivation_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `manga`
@@ -202,7 +202,7 @@ CREATE TABLE `mangachapters` (
   `LastPagesPrice` smallint UNSIGNED NOT NULL,
   `allow_purchase` tinyint(1) NOT NULL,
   `desactivation_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `mangachapters`
@@ -299,7 +299,7 @@ CREATE TABLE `mangagenders` (
   `g_ID` int NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
   `image` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `mangagenders`
@@ -326,7 +326,7 @@ CREATE TABLE `mangagenders_manga` (
   `Manga_ID` int UNSIGNED NOT NULL,
   `MangaGenders_ID` int NOT NULL,
   `counter` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `mangagenders_manga`
@@ -367,7 +367,7 @@ CREATE TABLE `mangalikes` (
   `user_id` int UNSIGNED NOT NULL,
   `manga_id` int NOT NULL,
   `LikeOrDislike` tinyint(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `mangalikes`
@@ -398,7 +398,7 @@ INSERT INTO `mangalikes` (`id`, `user_id`, `manga_id`, `LikeOrDislike`) VALUES
 CREATE TABLE `mangaviews` (
   `manga_ID` int NOT NULL,
   `views_count` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `mangaviews`
@@ -435,7 +435,7 @@ CREATE TABLE `manga_unique_view` (
   `v_ID` int NOT NULL,
   `user_ID` int NOT NULL,
   `manga_ID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `manga_unique_view`
@@ -501,7 +501,7 @@ CREATE TABLE `moderationlogcomment` (
   `date` datetime NOT NULL,
   `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `moderationlogcomment`
@@ -524,7 +524,7 @@ CREATE TABLE `moderationlogmanga` (
   `date` datetime NOT NULL,
   `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -539,7 +539,7 @@ CREATE TABLE `moderationlogmangachapters` (
   `date` datetime NOT NULL,
   `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -554,7 +554,7 @@ CREATE TABLE `moderationlogusers` (
   `date` datetime NOT NULL,
   `moderationStatus_ID` tinyint UNSIGNED NOT NULL DEFAULT '1',
   `information` varchar(256) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `moderationlogusers`
@@ -575,7 +575,7 @@ CREATE TABLE `moderationstatus` (
   `ID` tinyint NOT NULL,
   `Name` varchar(40) DEFAULT NULL,
   `show2` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `moderationstatus`
@@ -598,7 +598,7 @@ CREATE TABLE `permissionssuscriptions` (
   `uploadManga` tinyint(1) NOT NULL,
   `bypassMangaValidation` tinyint(1) NOT NULL,
   `promotedMangas` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -610,7 +610,7 @@ CREATE TABLE `profiles` (
   `id` int NOT NULL,
   `role_id` int NOT NULL,
   `user_id` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `profiles`
@@ -641,7 +641,7 @@ INSERT INTO `profiles` (`id`, `role_id`, `user_id`) VALUES
 CREATE TABLE `roles` (
   `id` int NOT NULL,
   `name` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
@@ -675,7 +675,7 @@ CREATE TABLE `rolespermissions` (
   `editSuscription` tinyint(1) NOT NULL,
   `editModeration` tinyint(1) NOT NULL,
   `modifyShop` tinyint(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `rolespermissions`
@@ -696,7 +696,7 @@ INSERT INTO `rolespermissions` (`id`, `roles_id`, `reviewComments`, `editComment
 CREATE TABLE `suscriptions` (
   `ID` tinyint NOT NULL,
   `Name` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `suscriptions`
@@ -718,7 +718,7 @@ CREATE TABLE `userbadges` (
   `purchaseDate` datetime NOT NULL,
   `expirationDate` datetime DEFAULT NULL,
   `badge_ID` smallint UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -730,7 +730,7 @@ CREATE TABLE `userinventory` (
   `ID` int NOT NULL,
   `user_ID` int NOT NULL,
   `item_ID` int NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `userinventory`
@@ -794,7 +794,7 @@ CREATE TABLE `userpointhistory` (
   `Date` datetime NOT NULL,
   `Action` varchar(150) DEFAULT NULL,
   `AddedBy` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -813,7 +813,7 @@ CREATE TABLE `userprofile` (
   `show_interests` tinyint(1) NOT NULL,
   `show_role` tinyint(1) NOT NULL,
   `bg_dir` text
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `userprofile`
@@ -847,7 +847,7 @@ CREATE TABLE `userreadmangahistory` (
   `User_ID` int UNSIGNED NOT NULL,
   `manga_ID` int UNSIGNED NOT NULL,
   `at_Chapter` smallint UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `userreadmangahistory`
@@ -891,7 +891,7 @@ CREATE TABLE `users` (
   `suscriptions_ID` tinyint UNSIGNED NOT NULL,
   `email_validated` tinyint UNSIGNED NOT NULL,
   `points` mediumint NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `users`

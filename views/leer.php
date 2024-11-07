@@ -15,7 +15,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
     if (isset($_GET['manga']) == NULL || isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
       echo "No disponible";
     } else {
-  ?>
+    ?>
       <div class="container">
         <center><button type="button" id="back" class="btn btn-primary" <?php if ($_GET['capitulo'] == 1) { ?> disabled <?php   } ?> onclick="window.location.href = 'leer?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] - 1; ?>';">
             <i class="bi bi-skip-backward"></i>
@@ -23,20 +23,21 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
           <button type="button" class="btn btn-secondary"> <a href="manga.php?manga=<?php echo $_GET['manga']; ?>#chapters"><i class="bi bi-list" style=""></i></a> </button>
 
           <button type="button" class="btn btn-primary" id="next" onclick="window.location.href = 'leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] + 1; ?>';"><i class="bi bi-skip-forward"></i>
-          </button> </center>
-          <?php
-          $count = count(glob("../mangas/$_GET[manga]/$_GET[capitulo]/*.jpg"));
-          ?>
+          </button>
+        </center>
+        <?php
+        $count = count(glob("../mangas/$_GET[manga]/$_GET[capitulo]/*.jpg"));
+        ?>
 
-          <div class="containerimg">
-            <div class="row d-flex">
-              <div class="d-flex fill">
-                <div class="col-6 align-self-stretch col-md-6 page" onclick="prevPage()"></div>
-                <div class="col-6 align-self-stretch col-md-6 page1" onclick="nextPage()"></div>
-                <img id="pagina" class="paginapc" src="../mangas/<?php echo $_GET['manga'] ?>/<?php echo $_GET['capitulo'] ?>/1.jpg" onerror="this.src='../img/notfound.png'">
-              </div>
+        <div class="containerimg">
+          <div class="row d-flex">
+            <div class="d-flex fill">
+              <div class="col-6 align-self-stretch col-md-6 page" onclick="prevPage()"></div>
+              <div class="col-6 align-self-stretch col-md-6 page1" onclick="nextPage()"></div>
+              <img id="pagina" class="paginapc" src="../mangas/<?php echo $_GET['manga'] ?>/<?php echo $_GET['capitulo'] ?>/1.jpg" onerror="this.src='../img/notfound.png'">
             </div>
           </div>
+        </div>
 
       </div>
       <script type="text/javascript" charset="utf-8" async defer>
@@ -46,17 +47,20 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
         };
       </script>
       <div class="d-flex justify-content-center">
-      <center><button type="button" id="back" class="btn btn-primary" <?php if ($_GET['capitulo'] == 1) { ?> disabled <?php   } ?> onclick="window.location.href = 'leer?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] - 1; ?>';">
+        <center><button type="button" id="back" class="btn btn-primary" <?php if ($_GET['capitulo'] == 1) { ?> disabled <?php   } ?> onclick="window.location.href = 'leer?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] - 1; ?>';">
             <i class="bi bi-skip-backward"></i>
           </button>
           <button type="button" class="btn btn-secondary"> <a href="manga.php?manga=<?php echo $_GET['manga']; ?>#chapters"><i class="bi bi-list" style=""></i></a> </button>
 
           <button type="button" class="btn btn-primary" id="next" onclick="window.location.href = 'leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] + 1; ?>';"><i class="bi bi-skip-forward"></i>
-          </button> </center>         
+          </button>
+        </center>
       </div>
-      <center><p id="pagtext"> Página 1 de <?php echo $count ?></p> </center>
+      <center>
+        <p id="pagtext"> Página 1 de <?php echo $count ?></p>
+      </center>
 
-<!--       
+      <!--       
       <div class="anuncio1 mx-auto d-block">
         <a href="https://www.coca-cola.com.ar/"> <img src="../img/otros/cocacola.png"> </a>
       </div> -->
@@ -66,7 +70,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
         currentpage = 1;
         let pagtext = document.getElementById("pagtext")
 
-      
+
 
         <?php
         $getchapters = "SELECT * FROM mangachapters WHERE Manga_ID =" . $_GET['manga'] . " ORDER BY number DESC;";
@@ -109,7 +113,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
           <?php } ?>
         }
 
-     <?php   if ($_GET['capitulo'] == $mangachapters[0]['number']) {
+        <?php if ($_GET['capitulo'] == $mangachapters[0]['number']) {
         ?>
 
           function maxlimiter() {
@@ -190,6 +194,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
       <div class="container">
 
         <?php if (isset($_SESSION['datos'])) { ?>
+          <script type="module" src="../js/comentar.js"></script>
           <div class="container-fluid comentariossection">
             <h6>Comentarios</h6>
 
@@ -197,7 +202,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
               <div class="d-flex flex-start w-100">
                 <img class="rounded-circle shadow-1-strong me-3" src="<?php echo $_SESSION['datos']['profile_pic'] ?>" width="70px" height="70px" />
                 <div class="form-outline w-100">
-                  <form method="post" id="comentar" oninput="activate()" action="mangas/comentar.php?manga=<?php echo $_GET['manga'] ?>&capitulo=<?php echo $_GET['capitulo'] ?>">
+                  <form method="post" id="comentar" oninput="activate()" action="">
                     <textarea class="form-control" name="comment" id="textarea" oninput="activate()" rows="4" style="background: #fff;" placeholder="Escribe tu comentario."></textarea>
                     <label class="form-label" for="textarea"></label>
                 </div>
@@ -207,6 +212,20 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
               </div>
             </div>
             </form>
+
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="toast-success" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header w-100 d-flex justify-content-between">
+                  <img src="../img/Cattusmangalogo.png" style="width:60px" class="rounded me-2 " alt="...">
+          
+                  <button type="button" class="btn-close " data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Comentario subido con éxito.
+                </div>
+              </div>
+            </div>
+
           <?php } else { ?>
             <br>
             <a class="text-primary" href="login.php">Inicia sesión para comentar!</a>
@@ -218,103 +237,17 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
         <div class="row d-flex">
           <div class="col-md-12 col-lg-10 col-xl-8">
             <div class="row">
-              <div class="col">
+              <div class="col" id="comentarios">
                 <hr>
-                <?php
+                <script type="module" src="../js/getComentarios.js">
+                  < /div> < /
+                  div > <
+                    /div> < /
+                  div >
 
-                $sql3 = "SELECT * FROM comments INNER JOIN users ON users.ID = comments.User_ID WHERE Manga_ID = $_GET[manga] AND mangachapter = $_GET[capitulo] ORDER BY comments.c_ID DESC";
-                $result3 = mysqli_query($conn, $sql3);
-                $resultCheck = mysqli_num_rows($result3);
-                if ($resultCheck > 0) {
-                  while ($row = mysqli_fetch_assoc($result3)) if ($row['deleted_at'] == NULL) { {
-                ?>
+                    <
+                    /div>
 
-                      <div class="d-flex flex-start mt-4">
-
-                        <a href="../controllers/perfil.php?User=<?php echo $row['ID'] ?>">
-                          <img class="rounded-circle shadow-1-strong me-3" src="<?php echo $row['profile_pic'] ?>" alt="avatar" width="65" height="65" />
-                        </a>
-                        <div class="flex-grow-1 flex-shrink-1">
-
-                          <div class="">
-                            <div class="">
-                              <h5 class="mb-1">
-                                <?php echo $row['Name'] ?>
-                              </h5>
-                              <span class="text-muted small" id="<?php echo $row['c_ID'] ?>">Hace</span>
-                            </div>
-                            <p class="small mb-0">
-                              <?php echo htmlspecialchars($row['content']) ?>
-                            </p>
-                          </div>
-                        </div>
-                        <?php if (isset($_SESSION['datos']['ID']) != NULL && $row['ID'] != $_SESSION['datos']['ID']) { ?>
-                          <div class="d-flex justify-content-end align-items-start">
-                            <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#report<?php echo $row['c_ID'] ?>">
-                              <span class="badge text-bg-secondary"><i class="bi bi-flag-fill"></i></span>
-                            </button>
-
-                            <div class="modal fade" id="report<?php echo $row['c_ID'] ?>" tabindex="-1" aria-labelledby="rpot" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h1 class="modal-title fs-5">Reportar comentario</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    <p>Danos más información para procesar al comentario:</p>
-                                    <form action="../controllers/mangas/reportarcom.php?user=<?php echo $row['ID'] ?>&id=<?php echo $row['c_ID'] ?>" method="POST">
-                                      <textarea type="text" class="form-control" name="information" id="informacion"></textarea>
-                                  </div>
-                                  <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-primary">Enviar</button>
-                                  </div>
-                                  </form>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-
-                      <?php }
-                      } ?>
-                      </div>
-                      <hr>
-                      <script>
-                        function fecha() {
-                          let fechadesde = document.getElementById("<?php echo $row['c_ID'] ?>");
-                          var datevalue = "<?php echo $row['created_at']; ?>";
-                          var date = Math.abs((new Date(datevalue).getTime() / 1000).toFixed(0));
-                          var currentdate = Math.abs((new Date().getTime() / 1000).toFixed(0));
-
-                          var diff = currentdate - date;
-                          var days = Math.floor(diff / 86400);
-                          var hours = Math.floor(diff / 3600) % 24;
-                          var minutes = Math.floor(diff / 60) % 60;
-                          if (days >= 1) {
-                            fechadesde.textContent = "Hace " + days + " dias";
-                          } else if (days < 1 && hours > 1) {
-                            fechadesde.textContent = "Hace " + hours + " horas";
-                          } else if (days < 1 && hours < 1) {
-                            fechadesde.textContent = "Hace " + minutes + " minutos";
-                          }
-                        }
-                        fecha();
-                      </script>
-                  <?php
-                  }
-                } else {
-                  echo "<p class='h6'>No hay ningun comentario. Se el primero en comentar!</p>";
-                }
-
-                  ?>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-<?php }
-  }
-} ?>
+                  <?php }
+              }
+            } ?>

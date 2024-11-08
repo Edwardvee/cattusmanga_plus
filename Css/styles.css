@@ -8,6 +8,10 @@
  */
 /*  background-image: linear-gradient(#549fe1,#549fe1, #549fe1,transparent); */
 }
+.botonimportante{
+  width: 4000px !important;
+}
+
 .sub-button{
  background: linear-gradient(to right, #688CD8,#688CD8),
             linear-gradient(to right,
@@ -142,6 +146,11 @@ div.backside p, h4{
   margin-top: 16px;
 }
 a.btn{
+  width: fit-content !important;
+  margin-right: 16px;
+}
+
+.card a.btn{
   margin-left: 10px;
   margin-bottom: auto;
   bottom: 1em;
@@ -385,7 +394,7 @@ body.darkmode .card {
 body.darkmode {
 /* background-color: linear-gradient(to top, #16202c, #1c2632, #222c38, #28323e, #2e3844);
  */
- background-color: #141414;
+ background-color: #242424;
  color:#ffffff;
 }                        
 

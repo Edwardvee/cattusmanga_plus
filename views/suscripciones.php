@@ -63,7 +63,7 @@
             </ul>
           </div>
           <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-            <a href="../controllers/payment.php" class="btn btn-primary"><i class="bi bi-cart"></i>1 Mes</a>
+            <a href="#" class="btn btn-primary"><i class="bi bi-cart"></i>1 Mes</a>
             <a href="#" class="btn btn-primary"><i class="bi bi-cart"></i>6 Meses</a>
             <a href="#" class="btn btn-primary "><i class="bi bi-cart"></i>12 Meses</a>
           </div>

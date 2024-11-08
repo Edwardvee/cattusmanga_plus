@@ -69,11 +69,11 @@
                             </li>
                         </ul>
                     <?php } else { ?>
-                        <ul class="nav nav-pills nav-justify-center ms-auto">
-                            <div class="space">
-                                <a type="button" href="../controllers/login.php" class="btn btn-light">
+                        <ul class="nav nav-pills nav-justify-center ms-auto" style="display: flex;">
+                            <div class="space" style="display:flex;">
+                                <a type="button botonimportante" href="../controllers/login.php" class="btn btn-light">
                                     Iniciar sesión</a>
-                                <a type="button" href="../controllers/register.php" class="btn btn-primary ">
+                                <a type="button botonimportante" href="../controllers/register.php" class="btn btn-primary" width="fit-content">
                                     Crear tu cuenta</a>
                             </div>
                         </ul>

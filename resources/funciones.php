@@ -109,9 +109,36 @@ function emailexist($conn, $email)
 	}
 	mysqli_stmt_close($stmt);
 }
+function checkLike($conn, $userid){
+    $sqlVerifyLike = "SELECT * FROM mangalikes WHERE manga_id= '" . $_POST['manga'] . "' AND user_id = " . $userid . " ";
+    $resVerifyLike = mysqli_query($conn, $sqlVerifyLike);
+    if (!$resVerifyLike) {
+       die('Error de Consulta ' . mysqli_error($conn));
+    }
+    return $resVerifyLike;
+}
+function checkFav($conn, $userid, $mangaid){
+	$sqlVerifyFav = "SELECT favourite_manga_ID FROM userprofile WHERE favourite_manga_ID= '" . $mangaid . "' AND user_id = " .  $userid . " ";
+	$resVerifyFav = mysqli_query($conn, $sqlVerifyFav);
+	if (!$resVerifyFav) {
+		die('Error de Consulta: ' . mysqli_error($conn));
+	}
+	$rowVerifyFav = mysqli_fetch_array($resVerifyFav);
+	return $resVerifyFav;
+}
+function getFav($conn, $userid){
+	$sqlUserFav = "SELECT favourite_manga_ID FROM userprofile WHERE user_id = '" . $userid . "'";
+$resUserFav = mysqli_query($conn, $sqlUserFav);
+if (!$resUserFav) {
+    die("Error de consulta: " . mysqli_error($conn));
+}
+$rowUserFav = mysqli_fetch_array($resUserFav);
+return $rowUserFav;
+}
+
 function createUser($conn, $email, $username, $pwd, $role_user = 2)
 {
-	$sql = "INSERT INTO users (`Name`, `Email`, `Password`, `profile_pic`, `activation_date`, `desactivation_date`, `suscriptions_ID`, `email_validated`, `points`) VALUES(?, ?, ?, '../img/avatar.png', NOW(), NULL, 0, 0,100);";
+	$sql = "INSERT INTO users (`Name`, `Email`, `Password`, `profile_pic`, `activation_date`, `desactivation_date`, `suscriptions_ID`, `email_validated`, `points`) VALUES(?, ?, ?, '../img/avatar.png', NOW(), NULL, 0, 0,2000);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: register.php?error=stmterror");

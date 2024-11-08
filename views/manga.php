@@ -179,31 +179,46 @@ if ($row_cnt > 0 || $row_cnt != NULL) {
       <a href="../controllers/categorias.php?categoria=<?php echo $categorias['Name']; ?>" type="button" class="btn btn-outline-secondary separado"><i class="bi bi-tag"></i><?php echo $categorias['Name']; ?></a>
       <?php } ?>
     <!-- Pregunto si inició sesion-->
-
+    
     <?php if (!isset($_SESSION['datos'])) { ?>
       <button type="button" class="btn btn-secondary favbtn" onclick="location.href='login.php'"><i class="bi bi-star"></i></button>
       <button type="button" class="btn btn-secondary favbtn" onclick="location.href='login.php'"><i class="bi bi-heart"></i></button>
 
       <!-- No le dio like-->
       <?php } else {
-      if (mysqli_num_rows($resultVerify) == 0) { ?>
-        <button type="button" class="btn btn-secondary favbtn" onclick="location.href='mangas/like.php?manga=<?php echo $manga_id; ?>'"><i class="bi bi-heart"></i></button>
-        <!-- Le dio like-->
-      <?php } else { ?>
-        <button type="button" class="btn btn-secondary favbtn" onclick="location.href='mangas/like.php?manga=<?php echo $manga_id; ?>'"><i class="bi bi-heart-fill"></i></button>
-        <!-- No le dio fav-->
-      <?php }
-      if (mysqli_num_rows($resultVerifyFav) == 0) { ?>
-        <button type="button" class="btn btn-secondary favbtn" onclick="location.href='mangas/favourite.php?manga=<?php echo $manga_id; ?>'"><i class="bi bi-star"></i></button>
-        <!-- Hay que hacer que muestre un mensaje de error cuando el usuario le da favorito a un manga cuando ya tiene uno en favoritos -->
-        <div class="bg-danger">
-          <?php echo (isset($msj) ? $msj : ''); ?>
-        </div>
-        <!-- Le dio fav -->
-      <?php } else { ?>
-        <button type="button" class="btn btn-secondary favbtn" onclick="location.href='mangas/favourite.php?manga=<?php echo $manga_id; ?>'"><i class="bi bi-star-fill"></i></button>
+      ?>
+        <script type="module" src="../js/mangaFunctions.js"></script>
+        <button type="button" id="likeButton" class="btn btn-secondary favbtn"><i id="iconLike" class="bi "></i></button>
+        <button type="button" id="favButton"  class="btn btn-secondary favbtn"><i id="iconFav" class="bi"></i></button>
+
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="likeToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header w-100 d-flex justify-content-between">
+                  <img src="../img/Cattusmangalogo.png" style="width:60px" class="rounded me-2 " alt="...">
+          
+                  <button type="button" class="btn-close " data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Se actualizaron tus me gusta.
+                </div>
+              </div>
+            </div>
+
+            <div class="toast-container position-fixed bottom-0 end-0 p-3">
+              <div id="favToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header w-100 d-flex justify-content-between">
+                  <img src="../img/Cattusmangalogo.png" style="width:60px" class="rounded me-2 " alt="...">
+          
+                  <button type="button" class="btn-close " data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                  Se actualizaron tus favoritos.
+                </div>
+              </div>
+            </div>
+
     <?php }
-    } ?>
+     ?>
   </div>
 
   <hr class="invisible">

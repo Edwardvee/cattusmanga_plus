@@ -52,7 +52,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
           </button>
           <button type="button" class="btn btn-secondary"> <a href="manga.php?manga=<?php echo $_GET['manga']; ?>#chapters"><i class="bi bi-list" style=""></i></a> </button>
 
-          <button type="button" class="btn btn-primary" id="next" onclick="window.location.href = 'leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] + 1; ?>';"><i class="bi bi-skip-forward"></i>
+          <button type="button" class="btn btn-primary" id="next1" onclick="window.location.href = 'leer.php?manga=<?php echo $_GET['manga']; ?>&capitulo=<?php echo $_GET['capitulo'] + 1; ?>';"><i class="bi bi-skip-forward"></i>
           </button>
         </center>
       </div>
@@ -92,6 +92,7 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
         if ($_GET['capitulo'] >  $lastchapter) { ?>
           $(document).ready(function() {
             $('#next').addClass('disabled');
+            $('#next1').addClass('disabled');
           });
         <?php } ?>
 

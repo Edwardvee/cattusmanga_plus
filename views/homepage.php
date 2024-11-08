@@ -14,7 +14,7 @@
       <a href="../controllers/manga.php?manga=10000"> <img src="../img/otros/wata.jpg" class="d-block w-100" alt="Watashi"></a>
       </div>
       <div class="carousel-item">
-      <a href="../controllers/manga.php?manga=10002"> <img src="../img/otros/naruto-banner-test.jpg" class="d-block w-100" alt="..."></a>
+      <a href="../controllers/manga.php?manga=10045"> <img src="../img/otros/naruto-banner-test.jpg" class="d-block w-100" alt="..."></a>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">

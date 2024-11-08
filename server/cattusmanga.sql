@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1deb5ubuntu1
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: localhost:3306
--- Tiempo de generación: 16-09-2024 a las 06:10:45
--- Versión del servidor: 8.0.39-0ubuntu0.22.04.1
--- Versión de PHP: 8.1.2-1ubuntu2.18
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 08-11-2024 a las 21:39:11
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `badges` (
-  `ID` smallint UNSIGNED NOT NULL,
+  `ID` smallint(5) UNSIGNED NOT NULL,
   `Name` varchar(64) NOT NULL,
   `description` varchar(256) DEFAULT NULL,
   `isAvaiable` tinyint(1) NOT NULL,
@@ -42,14 +42,14 @@ CREATE TABLE `badges` (
 --
 
 CREATE TABLE `comments` (
-  `c_ID` int UNSIGNED NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
-  `Manga_ID` int UNSIGNED NOT NULL,
+  `c_ID` int(10) UNSIGNED NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
+  `Manga_ID` int(10) UNSIGNED NOT NULL,
   `content` varchar(512) NOT NULL,
   `created_at` datetime NOT NULL,
   `deleted_at` datetime DEFAULT NULL,
-  `mangachapter` smallint DEFAULT NULL,
-  `nestedAt` smallint DEFAULT NULL
+  `mangachapter` smallint(6) DEFAULT NULL,
+  `nestedAt` smallint(6) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -78,7 +78,25 @@ INSERT INTO `comments` (`c_ID`, `User_ID`, `Manga_ID`, `content`, `created_at`, 
 (44, 20129, 10000, 'a\r\n', '2022-10-31 08:54:53', NULL, 3, NULL),
 (45, 20129, 10014, ':v\r\n', '2022-10-31 09:07:25', NULL, 2, NULL),
 (46, 20135, 10015, 'a\r\n', '2022-11-05 02:23:22', NULL, 1, NULL),
-(47, 20166, 10039, 'caca', '2024-09-16 06:02:53', NULL, 1, NULL);
+(47, 20166, 10039, 'caca', '2024-09-16 06:02:53', NULL, 1, NULL),
+(48, 20168, 10041, 'XD', '2024-11-08 11:14:11', NULL, 1, NULL),
+(49, 20169, 10010, 'olpok', '2024-11-08 11:42:51', NULL, 1, NULL),
+(50, 20169, 10041, 'asdsads', '2024-11-08 12:05:53', NULL, 1, NULL),
+(51, 20169, 10013, 'okkkl', '2024-11-08 14:18:16', NULL, 1, NULL),
+(52, 20169, 10047, 'XDDD', '2024-11-08 14:28:55', NULL, 1, NULL),
+(53, 20169, 10015, 'asdasda', '2024-11-08 14:42:21', NULL, 3, NULL),
+(54, 20169, 10015, 'benja', '2024-11-08 16:20:38', NULL, 3, NULL),
+(55, 20169, 10015, 'gabi', '2024-11-08 16:21:17', NULL, 3, NULL),
+(56, 20169, 10046, 'Soy porofilo\n', '2024-11-08 16:40:24', NULL, 1, NULL),
+(57, 20169, 10046, 'Poro poro porofilo', '2024-11-08 16:40:41', NULL, 1, NULL),
+(58, 20169, 10046, 'odio a daniel\n', '2024-11-08 16:40:49', NULL, 1, NULL),
+(59, 20169, 10046, 'Los doctores me odian', '2024-11-08 16:41:04', NULL, 1, NULL),
+(60, 20169, 10047, 'me llevan los poros', '2024-11-08 16:43:54', NULL, 1, NULL),
+(61, 20169, 10047, 'kkkkkk\n', '2024-11-08 16:43:58', NULL, 1, NULL),
+(62, 20169, 10047, 'de que te ries\n', '2024-11-08 16:44:04', NULL, 1, NULL),
+(63, 20169, 10047, 'nada we\n', '2024-11-08 16:44:07', NULL, 1, NULL),
+(64, 20169, 10013, 'bodrioki the grappler\n', '2024-11-08 17:29:33', NULL, 5, NULL),
+(65, 20169, 10046, 'midjutsu no plaizen\n', '2024-11-08 17:30:23', NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -87,12 +105,12 @@ INSERT INTO `comments` (`c_ID`, `User_ID`, `Manga_ID`, `content`, `created_at`, 
 --
 
 CREATE TABLE `itemsshop` (
-  `ID` mediumint UNSIGNED NOT NULL,
+  `ID` mediumint(8) UNSIGNED NOT NULL,
   `Name` varchar(64) NOT NULL,
   `Description` varchar(512) DEFAULT NULL,
-  `Price` mediumint UNSIGNED NOT NULL,
+  `Price` mediumint(8) UNSIGNED NOT NULL,
   `showitem` tinyint(1) NOT NULL,
-  `type` int NOT NULL,
+  `type` int(11) NOT NULL,
   `imgcode` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -101,7 +119,7 @@ CREATE TABLE `itemsshop` (
 --
 
 INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type`, `imgcode`) VALUES
-(1, 'Frogfile Frogtho', 'Foto de perfil de le pepe', 100, 1, 2, 'booba'),
+(1, 'Takagi-San', 'Takagi-san de \"Karakai Jōzu no Takagi-san\"\r\n', 100, 1, 2, 'Takagi'),
 (2, 'Goku', 'Foto de goku', 900, 1, 2, 'goku'),
 (3, 'Anya', 'La foto de anya', 12, 1, 2, 'anya'),
 (4, 'Perro sarabambiche', 'Tu no me metiste cabra', 200, 1, 2, 'baki'),
@@ -112,7 +130,6 @@ INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type
 (9, 'Fondo de konosuba', 'Fondo de konosuba 1', 50, 1, 3, 'konosuba1'),
 (10, 'Pakkun', 'Perro de Kakashi', 999, 1, 2, 'pakkunazi'),
 (11, 'Tomoko', 'Protagonista de Wacamole', 70, 1, 2, 'wacamole'),
-(12, 'Tomoko Wallpaper', 'Watamote fondo', 250, 1, 3, 'tomokon'),
 (13, 'Watamote wallpaper 2', 'Fondo de pantalla 2 de Tomoko', 120, 1, 3, 'tomokosad'),
 (14, 'DBZ wallpaper', 'La Kame-House de Dragon Ball Z', 80, 1, 3, 'dbzwallpaper'),
 (15, 'Gate perfil', 'Rori Mercuri de Gate (El mejor personaje de Gate)', 210, 1, 2, 'gate'),
@@ -122,7 +139,8 @@ INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type
 (19, 'Komi wallpaper', 'Personaje principal de Komi-san no puede comunicarse ', 200, 1, 3, 'komiwp'),
 (20, 'Komi y Tadano Wallpaper', 'Personajes de Komi-san no puede comunicarse, con disfraces de Amoug Us', 40, 1, 3, 'komitadawp'),
 (21, 'Voley Wallpaper', 'Voley', 40, 1, 3, 'haykuwp'),
-(22, 'Konosuba Fondo', 'Aqua descansando', 910, 1, 3, 'aqua');
+(22, 'Konosuba Fondo', 'Aqua descansando', 910, 1, 3, 'aqua'),
+(23, 'Blue Lock', 'Wallpaper de los jugadores png', 40, 1, 3, 'BlueLock');
 
 -- --------------------------------------------------------
 
@@ -131,7 +149,7 @@ INSERT INTO `itemsshop` (`ID`, `Name`, `Description`, `Price`, `showitem`, `type
 --
 
 CREATE TABLE `itemtypes` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `category` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -151,12 +169,12 @@ INSERT INTO `itemtypes` (`id`, `category`) VALUES
 --
 
 CREATE TABLE `manga` (
-  `ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
   `title` varchar(60) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `lastUpdate` date DEFAULT NULL,
   `uploadDate` datetime NOT NULL,
-  `User_ID` int UNSIGNED DEFAULT NULL,
+  `User_ID` int(10) UNSIGNED DEFAULT NULL,
   `desactivation_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -167,11 +185,9 @@ CREATE TABLE `manga` (
 INSERT INTO `manga` (`ID`, `title`, `description`, `lastUpdate`, `uploadDate`, `User_ID`, `desactivation_date`) VALUES
 (10000, 'Watamote', 'Kuroki Tomoko es una chica de preparatoria súper popular, con 50 años de experiencia en citas y con 100 chicos... pero en el mundo de los juegos otome. En la vida real es una persona cerrada y tímida, quien entra perfectamente en la definición mojyo (una mujer repulsiva).', '2022-11-08', '2022-08-23 13:43:57', 20129, NULL),
 (10001, 'Tokyo Revengers', 'Un día como otro cualquiera en su rutina monótona, Takemichi Hanagaki ve en las noticias que su novia del instituto ha perdido la vida en un accidente. A partir de ese momento, Takemichi sufre un acontecimiento que le hará volver atrás en el tiempo, siendo una segunda oportunidad para remediar todo lo que desencadenará el accidente en el futuro y evitar la muerte de su, en ese momento (en el pasado), pareja.', NULL, '2022-08-23 13:40:51', NULL, NULL),
-(10002, 'Naruto', 'La historia de un ninja huérfano adolescente llamado Naruto Uzumaki, cuyos padres murieron en el ataque del Zorro Demonio de Nueve Colas, y quien aspira a convertirse en Hokage (líder de su aldea) con el propósito de ser reconocido como alguien importante dentro de la aldea y entre sus compañeros.', NULL, '2022-08-23 13:42:21', NULL, NULL),
-(10003, 'HAIKYU!!', 'En el voleibol, como en el baloncesto, la altura es clave para poder ser parte de un equipo y apuntar alto. Pero Shoyo Hinata no cuenta con esa cualidad. Sin embargo, eso no será impedimento para seguir luchando día a día para llegar a ser como aquel jugador que vio cuando estaba en primaria: El Pequeño Gigante.', NULL, '2022-08-23 13:42:21', NULL, NULL),
 (10004, 'Mokushiroku no Yonkishi', 'Argumento. Percival, un amable chico, vive con su abuelo en un lugar remoto llamado \"God\'s Finger\". Sin embargo, el mundo no le permitirá vivir en paz, pues su encuentro con un misterioso caballero cambia su destino y se revela un impactante secreto, haciendo que el niño emprenda un viaje interminable.', NULL, '2022-10-12 05:59:01', NULL, NULL),
 (10005, 'One Piece', 'One Piece es la historia de un chico llamado Monkey D. Luffy, quién se inspiró en Shanks, un pirata que le salvó la vida, para convertirse en el Rey de los Piratas. Al comienzo de la serie, veinticuatro años antes de la historia actual, un pirata llamado Gol D. Roger, conocido como el Rey de los Piratas, fue ejecutado, pero antes de su muerte, le dijo a la multitud de su tesoro, el One Piece. Sus palabras desataron lo que sería conocida como «la Gran Era de la Piratería», innumerables piratas se dispusieron a buscar el tesoro causando grandes problemas al Gobierno Mundial. Monkey D. Luffy se convierte en uno de ellos, deseando ser el próximo Rey de los Piratas y se dispone a reunir compañeros de tripulación y comenzar sus aventuras.', NULL, '2022-10-12 06:42:11', NULL, NULL),
-(10006, 'Tokyo Ghoul', 'En Tokio hay varias muertes, cometidas por Ghouls, seres desconocidos que sobreviven a base de carne humana. Un día Ken Kaneki, un joven de 18 años conoce a una chica llamada Rize Kamishiro en una cafetería y la invita a salir. Tras una cita aparentemente normal, Kaneki se ofrece a acompañarla a su casa.', NULL, '2022-10-12 06:42:11', NULL, NULL),
+(10006, 'Tokyo Ghoul', 'En Tokio hay varias muertes, cometidas por Ghouls, seres desconocidos que sobreviven a base de carne humana. Un día Ken Kaneki, un joven de 18 años conoce a una chica llamada Rize Kamishiro en una cafetería y la invita a salir. Tras una cita aparentemente normal, Kaneki se ofrece a acompañarla a su casa.', '2024-11-08', '2022-10-12 06:42:11', NULL, NULL),
 (10007, 'Totsukuni No Shoujo - Tomo 01', 'En un mundo dividido entre los renios de \"Dentro\" y \"Fuera\", está prohibido que los habitantes de ambos reinos crucen al otro. Una niña llamada Shiva vive en el reino que no le pertenece, en un pueblo vacío con un guardián demoníaco llamado sólo como \"Sensei\", con el cuál tiene una estrecha relación.', NULL, '2022-10-12 06:45:07', NULL, NULL),
 (10008, 'Komi-san wa, Komyushō Desu', 'En un instituto lleno de personajes peculiares, Tadano trata de ayudar a su tímida y asocial compañera de clase Komi a lograr su objetivo: hacerse amiga de 100 personas.\r\n', NULL, '2022-10-16 07:01:40', NULL, NULL),
 (10009, 'Boruto: Next generations', 'Boruto Uzumaki, hijo de Naruto Uzumaki -Séptimo Hokage-, está decidido a seguir los pasos para convertirse en un ninja. Por eso, se ha inscrito en la Academia Ninja. No obstante, debido a ser hijo de quien es, otros estudiantes lo menosprecian, pero pronto se hace un hueco gracias a su valía y méritos propios.', '2022-11-08', '2022-10-16 21:41:21', NULL, NULL),
@@ -179,11 +195,16 @@ INSERT INTO `manga` (`ID`, `title`, `description`, `lastUpdate`, `uploadDate`, `
 (10012, 'Hajime no Ippo', 'Ippo Makunouchi (幕之内 一歩 Makunouchi Ippo) es un chico muy reservado y muy tímido de 16 años que trabaja con su madre en un negocio familiar de botes para pesca llamado \" tienda de pesca makunouchi \" Debido a ello él nunca tiene tiempo libre para dedicarse a los deportes o hacer amigos.', '2022-11-08', '2022-10-23 13:43:57', NULL, NULL),
 (10013, 'Baki the Grappler', 'Baki Hanma, es un luchador jóven que se muere de ganas por seguir los pasos de su padre, Yujiro Hanma, y convertirse en el luchador más fuerte del mundo. A través de esto, él se entrena incansablemente y lucha constantemente para afilar sus habilidades y desarrollar su cuerpo para alcanzar estos objetivos. Muchas batallas intensas le deparan a Baki; como él va buscando ser el mejor para, en última instancia, tomar el título de “Rey” de su padre; Baki Hanma, hijo del grappler más fuerte del mundo, trata de reclamar el trono de su padre. Para conseguirlo, él tiene que luchar mucho, y hacer muchos amigos y enemigos en el proceso.', '2022-11-08', '2022-10-23 17:57:58', NULL, NULL),
 (10014, 'Shingeki no Kyojin', 'Hace cien años, los Titanes aparecieron. Ante esta invasión, la humanidad se vio obligada a esconderse tras enormes muros para no convertirse en alimento. De esta manera los seres humanos pudieron volver a conocer la paz y la prosperidad, hasta el punto de casi olvidar la verdadera razón por la que vivían encerrados. Entonces aparece Eren Jaeger, un joven que sueña con el mundo exterior, hastiado del conformismo.', NULL, '2022-10-23 17:57:58', NULL, NULL),
-(10015, 'Kono Subarashii Sekai ni Shukufuku wo! ', 'La serie sigue a Kazuma Satō, un joven otaku que es enviado a un mundo de fantasía con elementos similares a los videojuegos MMORPG después de su muerte (en un ridículo accidente), donde se forma un grupo disfuncional con una diosa, una archimaga y una paladín.', NULL, '2022-11-01 17:57:58', NULL, NULL),
+(10015, 'Kono Subarashii Sekai ni Shukufuku wo!', 'La serie sigue a Kazuma Satō, un joven otaku que es enviado a un mundo de fantasía con elementos similares a los videojuegos MMORPG después de su muerte (en un ridículo accidente), donde se forma un grupo disfuncional con una diosa, una archimaga y una paladín.', '2024-11-08', '2022-11-01 17:57:58', NULL, NULL),
 (10016, 'Fairy Tail: Happy no Daiboken', 'En cuanto a Fairy Tail: Happy no Daiboken es un spin-off protagonizado por Happy, quien ha sido separado de Natsu y tiene que sobrevivir en un mundo lleno de animales.', '2022-11-08', '2022-11-01 17:57:58', NULL, NULL),
 (10017, 'Ijiranaide, Nagatoro-san', 'A la estudiante de preparatoria Hayase Nagatoro le encanta pasar su tiempo libre haciendo una cosa, ¡y eso es molestar a su Senpai! Después de que Nagatoro y sus amigos se toparan con los dibujos del aspirante a artista, disfrutan molestando sin piedad al tímido Senpai.', NULL, '2022-11-01 17:57:58', NULL, NULL),
-(10038, 'Caca el tutorial', 'es una cacaa', '2024-09-16', '2024-09-16 02:55:38', 20166, NULL),
-(10039, 'fdfsd', 'fsddfs', NULL, '2024-09-16 02:58:02', 20166, NULL);
+(10041, 'DANDADAN', 'Takakura es un joven amante de lo oculto que no cree en fantasmas, mientras que su amiga, Ayase, no cree en los alienígenas, pero juntos se toparán con un misterio que desafiará todas sus creencias y convenciones. ¡¡Comienza una historia adolescente terrorífica!!', NULL, '2024-11-08 15:08:58', NULL, NULL),
+(10042, 'Sailor Moon', 'Usagi Tsukino era una chica común y corriente hasta que una gata parlante llamada Luna le dice que ella es Sailor Moon y le confiere los poderes para transformarse en su nueva identidad. Como tal, debe enfrentar a diversos enemigos e impartir justicia en el nombre de la luna y de la misteriosa Princesa de la Luna. El transcurso de la historia va llevando a Usagi a conocer a otras chicas destinadas a ser Sailor Senshi (Sailor Scouts), las que forman equipo con ella y las que prefieren actuar por su cuenta. También surge el clásico personaje masculino que la salva a último momento, Tuxedo Mask (Tuxedo Kamen), por el que Usagi se vuelve loca, y la historia va desentrañando el por qué de que todos hayan sido predestinados a pelear por la justicia.', '2024-11-08', '2024-11-08 16:01:01', 1, NULL),
+(10043, 'Azumanga Daioh!', '\r\nChiyo Mihama es una niña prodigio que se ha saltado varios cursos para acabar en el instituto. En su primer día, descubre que su clase está llena de individuos excéntricos. Sakaki, que sobresale por encima de Chiyo, es distante e intimidante; Tomo Takino es ruidosa y molesta; Ayumu «Osaka» Kasuga es despistado pero se le da muy bien resolver acertijos; Koyomi «Yomi» Mizuhara está obsesionada con las dietas y le encanta el karaoke a pesar de cantar fatal; y Kagura, que es una marimacho competitiva. A medida que los compañeros de clase se hacen buenos amigos, viven juntos su día a día: el colegio, los estudios, los viajes de verano y todo tipo de travesuras.\r\n\r\nTraducción realizada con la versión gratuita del traductor DeepL.com', NULL, '2024-11-08 16:10:08', NULL, NULL),
+(10044, 'Kimetsu No Yaiba', 'Kimetsu no Yaiba, también conocida bajo su nombre en inglés Demon Slayer, o en español Guardianes de la noche, es una serie de manga escrita e ilustrada por Koyoharu Gotōge, cuya publicación comenzó el 15 de febrero de 2016 en la revista semanal Shūkan Shōnen Jump de la editorial Shūeisha.', NULL, '2024-11-08 16:21:59', NULL, NULL),
+(10045, 'Naruto', 'Naruto Uzumaki es un ninja adolescente que tiene encerrado en su interior al Zorro de Nueve Colas.\r\nDoce años antes del inicio de la serie, este demonio atacó a la Aldea Oculta de la Hoja, matando a muchas\r\npersonas. Como consecuencia, el líder de la aldea (el Cuarto Hokage) sacrificó su vida utilizando el Shiki Fujin para sellarlo dentro de Naruto cuando era un recién nacido, con lo que esperaba\r\ndetener la masacre.', NULL, '2024-11-08 12:38:11', 20169, NULL),
+(10046, 'Jujutsu Kaisen', 'Yuuji Itadori es un estudiante con unas habilidades físicas excepcionales. Todos los días, como rutina, va al hospital a visitar a su abuelo enfermo y decide apuntarse al club de ocultismo de instituto para no dar un palo en el agua... Sin embargo, un buen día el sello del talismán que se hallaba escondido en su instituto se rompe, y comienzan a aparecer unos monstruos. Ante este giro de los acontecimientos, Itadori decide adentrarse en el instituto para salvar a sus compañeros. ¿Qué le deparará el destino?', NULL, '2024-11-08 12:51:23', 20169, NULL),
+(10047, 'One Punch Man', 'La historia tiene lugar en una metrópolis ficticia conocida como Ciudad Z, en Japón. El mundo se ve invadido por extraños monstruos que aparecen misteriosamente y que causan numerosos desastres a la población. Saitama es un poderoso superhéroe calvo que derrota fácilmente a los monstruos u otros villanos con un único golpe de su puño. Debido a esto, Saitama ha encontrado aburrida su fuerza y siempre está tratando de encontrar rivales más poderosos que le puedan igualar.', NULL, '2024-11-08 13:07:56', 20169, NULL);
 
 -- --------------------------------------------------------
 
@@ -192,14 +213,14 @@ INSERT INTO `manga` (`ID`, `title`, `description`, `lastUpdate`, `uploadDate`, `
 --
 
 CREATE TABLE `mangachapters` (
-  `ID` int UNSIGNED NOT NULL,
-  `Manga_ID` int UNSIGNED NOT NULL,
+  `ID` int(10) UNSIGNED NOT NULL,
+  `Manga_ID` int(10) UNSIGNED NOT NULL,
   `description` varchar(512) DEFAULT NULL,
-  `number` smallint UNSIGNED NOT NULL,
+  `number` smallint(5) UNSIGNED NOT NULL,
   `uploadDate` date NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
-  `LastPagesSuscription` smallint UNSIGNED NOT NULL,
-  `LastPagesPrice` smallint UNSIGNED NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
+  `LastPagesSuscription` smallint(5) UNSIGNED NOT NULL,
+  `LastPagesPrice` smallint(5) UNSIGNED NOT NULL,
   `allow_purchase` tinyint(1) NOT NULL,
   `desactivation_date` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -270,14 +291,6 @@ INSERT INTO `mangachapters` (`ID`, `Manga_ID`, `description`, `number`, `uploadD
 (60, 10004, NULL, 8, '2022-10-12', 20122, 0, 0, 0, NULL),
 (61, 10004, NULL, 9, '2022-10-12', 20122, 0, 0, 0, NULL),
 (62, 10004, NULL, 10, '2022-10-12', 100, 0, 0, 0, NULL),
-(63, 10000, NULL, 2, '2022-09-04', 100, 0, 0, 0, NULL),
-(64, 10000, NULL, 3, '2022-10-25', 1, 0, 0, 0, NULL),
-(65, 10000, NULL, 4, '2022-10-25', 1, 0, 0, 0, NULL),
-(66, 10000, NULL, 5, '2022-10-25', 2, 0, 0, 0, NULL),
-(67, 10000, NULL, 6, '2022-10-25', 0, 0, 0, 0, NULL),
-(68, 10000, NULL, 7, '2022-10-25', 9, 0, 0, 0, NULL),
-(69, 10000, NULL, 8, '2022-10-25', 90, 0, 0, 0, NULL),
-(70, 10000, NULL, 9, '2022-10-25', 90, 0, 0, 0, NULL),
 (71, 10015, NULL, 1, '2022-10-23', 20122, 0, 0, 0, NULL),
 (72, 10015, NULL, 2, '2022-10-23', 20122, 0, 0, 0, NULL),
 (73, 10015, NULL, 3, '2022-10-23', 20122, 0, 0, 0, NULL),
@@ -287,7 +300,14 @@ INSERT INTO `mangachapters` (`ID`, `Manga_ID`, `description`, `number`, `uploadD
 (77, 10017, NULL, 2, '2022-10-23', 20122, 0, 0, 0, NULL),
 (78, 10017, NULL, 3, '2022-10-23', 20122, 0, 0, 0, NULL),
 (79, 10038, NULL, 1, '2024-09-16', 20166, 0, 0, 0, NULL),
-(80, 10039, NULL, 1, '2024-09-16', 20166, 0, 0, 0, NULL);
+(80, 10039, NULL, 1, '2024-09-16', 20166, 0, 0, 0, NULL),
+(83, 10041, NULL, 1, '2024-11-08', 1, 0, 0, 0, NULL),
+(84, 10042, NULL, 1, '2024-11-08', 1, 0, 0, 0, NULL),
+(85, 10043, NULL, 1, '2024-11-08', 1, 0, 0, 0, NULL),
+(86, 10044, NULL, 1, '2024-11-08', 0, 0, 0, 0, NULL),
+(87, 10045, NULL, 1, '2024-11-08', 20169, 0, 0, 0, NULL),
+(88, 10046, NULL, 1, '2024-11-08', 20169, 0, 0, 0, NULL),
+(89, 10047, NULL, 1, '2024-11-08', 20169, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -296,9 +316,9 @@ INSERT INTO `mangachapters` (`ID`, `Manga_ID`, `description`, `number`, `uploadD
 --
 
 CREATE TABLE `mangagenders` (
-  `g_ID` int NOT NULL,
+  `g_ID` int(11) NOT NULL,
   `Name` varchar(20) DEFAULT NULL,
-  `image` int NOT NULL
+  `image` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -310,10 +330,11 @@ INSERT INTO `mangagenders` (`g_ID`, `Name`, `image`) VALUES
 (2, 'Escolar', 10000),
 (3, 'Shounen', 10010),
 (4, 'Slice of life', 10008),
-(47, 'Luchas', 10012),
 (48, 'Peleas', 10012),
-(49, 'Yaoi', 10013),
-(50, 'ppeee', 10038);
+(51, 'Isekai', 10015),
+(52, 'Fantasia', 10016),
+(53, 'Thriller', 10006),
+(54, 'Shoujo', 10042);
 
 -- --------------------------------------------------------
 
@@ -322,10 +343,10 @@ INSERT INTO `mangagenders` (`g_ID`, `Name`, `image`) VALUES
 --
 
 CREATE TABLE `mangagenders_manga` (
-  `mg_ID` int NOT NULL,
-  `Manga_ID` int UNSIGNED NOT NULL,
-  `MangaGenders_ID` int NOT NULL,
-  `counter` int NOT NULL
+  `mg_ID` int(11) NOT NULL,
+  `Manga_ID` int(10) UNSIGNED NOT NULL,
+  `MangaGenders_ID` int(11) NOT NULL,
+  `counter` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -349,12 +370,17 @@ INSERT INTO `mangagenders_manga` (`mg_ID`, `Manga_ID`, `MangaGenders_ID`, `count
 (16, 10009, 3, 3),
 (22, 10000, 16, 1),
 (23, 10016, 4, 1),
-(36, 10012, 48, 1),
-(38, 10012, 47, 2),
-(39, 10013, 47, 1),
+(38, 10012, 47, 1),
 (41, 10038, 2, 1),
 (42, 10038, 50, 2),
-(43, 10039, 50, 1);
+(43, 10039, 50, 1),
+(45, 10006, 53, 2),
+(46, 10045, 48, 1),
+(47, 10046, 48, 1),
+(48, 10047, 48, 1),
+(49, 10042, 2, 1),
+(50, 10042, 54, 2),
+(51, 10015, 51, 1);
 
 -- --------------------------------------------------------
 
@@ -363,9 +389,9 @@ INSERT INTO `mangagenders_manga` (`mg_ID`, `Manga_ID`, `MangaGenders_ID`, `count
 --
 
 CREATE TABLE `mangalikes` (
-  `id` int NOT NULL,
-  `user_id` int UNSIGNED NOT NULL,
-  `manga_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `user_id` int(10) UNSIGNED NOT NULL,
+  `manga_id` int(11) NOT NULL,
   `LikeOrDislike` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -375,19 +401,26 @@ CREATE TABLE `mangalikes` (
 
 INSERT INTO `mangalikes` (`id`, `user_id`, `manga_id`, `LikeOrDislike`) VALUES
 (12, 20121, 10000, NULL),
-(13, 20121, 10002, NULL),
 (14, 20126, 10000, NULL),
 (15, 20126, 10001, NULL),
-(16, 20126, 10002, NULL),
 (17, 20126, 10010, NULL),
-(18, 20126, 10003, NULL),
 (19, 20127, 10008, NULL),
 (21, 20131, 10004, NULL),
 (22, 20131, 10009, NULL),
 (24, 20131, 10006, NULL),
 (25, 20129, 10000, NULL),
 (26, 20129, 10012, NULL),
-(27, 20166, 10012, NULL);
+(27, 20166, 10012, NULL),
+(28, 20167, 10017, NULL),
+(31, 20169, 10016, NULL),
+(37, 20169, 10045, NULL),
+(38, 20169, 10043, NULL),
+(39, 20169, 10013, NULL),
+(40, 20169, 10047, NULL),
+(42, 20169, 10015, NULL),
+(44, 20169, 10000, NULL),
+(45, 20170, 10041, NULL),
+(46, 20171, 10045, NULL);
 
 -- --------------------------------------------------------
 
@@ -396,8 +429,8 @@ INSERT INTO `mangalikes` (`id`, `user_id`, `manga_id`, `LikeOrDislike`) VALUES
 --
 
 CREATE TABLE `mangaviews` (
-  `manga_ID` int NOT NULL,
-  `views_count` int NOT NULL
+  `manga_ID` int(11) NOT NULL,
+  `views_count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -405,25 +438,33 @@ CREATE TABLE `mangaviews` (
 --
 
 INSERT INTO `mangaviews` (`manga_ID`, `views_count`) VALUES
-(10000, 14),
+(10000, 3),
 (10001, 1),
-(10002, 4),
-(10003, 3),
+(10002, 1),
+(10003, 1),
 (10004, 2),
-(10005, 3),
-(10006, 3),
-(10007, 2),
-(10008, 3),
+(10005, 1),
+(10006, 1),
+(10007, 1),
+(10008, 1),
 (10009, 1),
-(10010, 3),
-(10012, 5),
-(10013, 2),
-(10014, 3),
+(10010, 1),
+(10012, 2),
+(10013, 3),
+(10014, 1),
 (10016, 1),
 (10015, 2),
 (10017, 3),
 (10038, 1),
-(10039, 1);
+(10039, 1),
+(10041, 3),
+(10041, 3),
+(10042, 1),
+(10043, 1),
+(10044, 2),
+(10045, 3),
+(10046, 3),
+(10047, 1);
 
 -- --------------------------------------------------------
 
@@ -432,9 +473,9 @@ INSERT INTO `mangaviews` (`manga_ID`, `views_count`) VALUES
 --
 
 CREATE TABLE `manga_unique_view` (
-  `v_ID` int NOT NULL,
-  `user_ID` int NOT NULL,
-  `manga_ID` int NOT NULL
+  `v_ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `manga_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -485,7 +526,57 @@ INSERT INTO `manga_unique_view` (`v_ID`, `user_ID`, `manga_ID`) VALUES
 (45, 20166, 10017),
 (46, 20166, 10005),
 (47, 20166, 10039),
-(48, 20166, 10015);
+(48, 20166, 10015),
+(49, 20167, 10017),
+(50, 20168, 10000),
+(51, 20168, 10002),
+(52, 20168, 10013),
+(53, 20168, 10017),
+(54, 20168, 10014),
+(55, 20168, 10040),
+(56, 20168, 10041),
+(57, 20169, 10010),
+(58, 20169, 10017),
+(59, 20169, 10014),
+(60, 20169, 10002),
+(61, 20169, 10016),
+(62, 20169, 10006),
+(63, 20169, 10041),
+(64, 20169, 10008),
+(65, 20169, 10042),
+(66, 20169, 10005),
+(67, 20169, 10043),
+(68, 20169, 10000),
+(69, 20169, 10009),
+(70, 20169, 10003),
+(71, 20169, 10007),
+(72, 20163, 10041),
+(73, 20163, 10042),
+(74, 20163, 10006),
+(75, 20163, 10009),
+(76, 20169, 10044),
+(77, 20169, 10015),
+(78, 20169, 10045),
+(79, 20169, 10046),
+(80, 20169, 10047),
+(81, 20169, 10012),
+(82, 20169, 10013),
+(83, 20163, 10017),
+(84, 20163, 10000),
+(85, 20163, 10046),
+(86, 20163, 10013),
+(87, 20163, 10012),
+(88, 20163, 10044),
+(89, 20170, 10045),
+(90, 20170, 10041),
+(91, 20170, 10000),
+(92, 20171, 10013),
+(93, 20171, 10017),
+(94, 20171, 10045),
+(95, 20171, 10015),
+(96, 20171, 10046),
+(97, 20171, 10041),
+(98, 20169, 10004);
 
 -- --------------------------------------------------------
 
@@ -494,12 +585,12 @@ INSERT INTO `manga_unique_view` (`v_ID`, `user_ID`, `manga_ID`) VALUES
 --
 
 CREATE TABLE `moderationlogcomment` (
-  `MC_ID` int UNSIGNED NOT NULL,
-  `comments_ID` int UNSIGNED NOT NULL,
-  `user_ID` int UNSIGNED NOT NULL,
-  `af_user` int NOT NULL,
+  `MC_ID` int(10) UNSIGNED NOT NULL,
+  `comments_ID` int(10) UNSIGNED NOT NULL,
+  `user_ID` int(10) UNSIGNED NOT NULL,
+  `af_user` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -518,11 +609,11 @@ INSERT INTO `moderationlogcomment` (`MC_ID`, `comments_ID`, `user_ID`, `af_user`
 --
 
 CREATE TABLE `moderationlogmanga` (
-  `ID` int NOT NULL,
-  `Manga_ID` int UNSIGNED NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
+  `ID` int(11) NOT NULL,
+  `Manga_ID` int(10) UNSIGNED NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -533,11 +624,11 @@ CREATE TABLE `moderationlogmanga` (
 --
 
 CREATE TABLE `moderationlogmangachapters` (
-  `ID` int NOT NULL,
-  `MangaChapters_ID` int UNSIGNED NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
+  `ID` int(11) NOT NULL,
+  `MangaChapters_ID` int(10) UNSIGNED NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint UNSIGNED NOT NULL,
+  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL,
   `information` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -548,11 +639,11 @@ CREATE TABLE `moderationlogmangachapters` (
 --
 
 CREATE TABLE `moderationlogusers` (
-  `ID` int NOT NULL,
-  `Affected_User_ID` int NOT NULL,
-  `User_ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
+  `Affected_User_ID` int(11) NOT NULL,
+  `User_ID` int(11) NOT NULL,
   `date` datetime NOT NULL,
-  `moderationStatus_ID` tinyint UNSIGNED NOT NULL DEFAULT '1',
+  `moderationStatus_ID` tinyint(3) UNSIGNED NOT NULL DEFAULT 1,
   `information` varchar(256) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -572,7 +663,7 @@ INSERT INTO `moderationlogusers` (`ID`, `Affected_User_ID`, `User_ID`, `date`, `
 --
 
 CREATE TABLE `moderationstatus` (
-  `ID` tinyint NOT NULL,
+  `ID` tinyint(4) NOT NULL,
   `Name` varchar(40) DEFAULT NULL,
   `show2` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -592,7 +683,7 @@ INSERT INTO `moderationstatus` (`ID`, `Name`, `show2`) VALUES
 --
 
 CREATE TABLE `permissionssuscriptions` (
-  `suscriptions_ID` tinyint UNSIGNED NOT NULL,
+  `suscriptions_ID` tinyint(3) UNSIGNED NOT NULL,
   `pointMultiplier` float DEFAULT NULL,
   `allAccess` tinyint(1) NOT NULL,
   `uploadManga` tinyint(1) NOT NULL,
@@ -607,9 +698,9 @@ CREATE TABLE `permissionssuscriptions` (
 --
 
 CREATE TABLE `profiles` (
-  `id` int NOT NULL,
-  `role_id` int NOT NULL,
-  `user_id` int NOT NULL
+  `id` int(11) NOT NULL,
+  `role_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -626,11 +717,16 @@ INSERT INTO `profiles` (`id`, `role_id`, `user_id`) VALUES
 (26, 2, 20164),
 (27, 2, 20165),
 (28, 2, 20166),
+(29, 2, 20167),
+(30, 2, 20168),
+(31, 2, 20169),
+(32, 2, 20170),
 (2, 3, 20127),
 (5, 3, 20132),
 (4, 4, 20126),
 (6, 4, 20129),
-(25, 4, 20163);
+(25, 4, 20163),
+(33, 4, 20171);
 
 -- --------------------------------------------------------
 
@@ -639,7 +735,7 @@ INSERT INTO `profiles` (`id`, `role_id`, `user_id`) VALUES
 --
 
 CREATE TABLE `roles` (
-  `id` int NOT NULL,
+  `id` int(11) NOT NULL,
   `name` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -660,13 +756,13 @@ INSERT INTO `roles` (`id`, `name`) VALUES
 --
 
 CREATE TABLE `rolespermissions` (
-  `id` int NOT NULL,
-  `roles_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `roles_id` int(11) NOT NULL,
   `reviewComments` tinyint(1) NOT NULL,
   `editComments` tinyint(1) NOT NULL,
   `reviewMangas` tinyint(1) NOT NULL,
   `editMangas` tinyint(1) NOT NULL,
-  `delayActions` smallint UNSIGNED DEFAULT NULL,
+  `delayActions` smallint(5) UNSIGNED DEFAULT NULL,
   `reviewUsers` tinyint(1) NOT NULL,
   `editUsers` tinyint(1) NOT NULL,
   `viewModerationLog` tinyint(1) NOT NULL,
@@ -694,7 +790,7 @@ INSERT INTO `rolespermissions` (`id`, `roles_id`, `reviewComments`, `editComment
 --
 
 CREATE TABLE `suscriptions` (
-  `ID` tinyint NOT NULL,
+  `ID` tinyint(4) NOT NULL,
   `Name` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -714,10 +810,10 @@ INSERT INTO `suscriptions` (`ID`, `Name`) VALUES
 --
 
 CREATE TABLE `userbadges` (
-  `User_ID` int UNSIGNED NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
   `purchaseDate` datetime NOT NULL,
   `expirationDate` datetime DEFAULT NULL,
-  `badge_ID` smallint UNSIGNED NOT NULL
+  `badge_ID` smallint(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -727,9 +823,9 @@ CREATE TABLE `userbadges` (
 --
 
 CREATE TABLE `userinventory` (
-  `ID` int NOT NULL,
-  `user_ID` int NOT NULL,
-  `item_ID` int NOT NULL
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `item_ID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -780,7 +876,22 @@ INSERT INTO `userinventory` (`ID`, `user_ID`, `item_ID`) VALUES
 (41, 20129, 22),
 (42, 20135, 3),
 (43, 20163, 5),
-(44, 20166, 1);
+(44, 20166, 1),
+(45, 20168, 14),
+(46, 20169, 4),
+(47, 20169, 2),
+(48, 20169, 9),
+(49, 20169, 3),
+(50, 20169, 6),
+(51, 20169, 1),
+(52, 20169, 5),
+(53, 20169, 8),
+(54, 20170, 5),
+(55, 20171, 1),
+(56, 20169, 15),
+(57, 20169, 23),
+(58, 20169, 11),
+(59, 20169, 13);
 
 -- --------------------------------------------------------
 
@@ -789,8 +900,8 @@ INSERT INTO `userinventory` (`ID`, `user_ID`, `item_ID`) VALUES
 --
 
 CREATE TABLE `userpointhistory` (
-  `ID` bigint NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
+  `ID` bigint(20) NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
   `Date` datetime NOT NULL,
   `Action` varchar(150) DEFAULT NULL,
   `AddedBy` varchar(150) DEFAULT NULL
@@ -803,16 +914,16 @@ CREATE TABLE `userpointhistory` (
 --
 
 CREATE TABLE `userprofile` (
-  `User_ID` int NOT NULL,
+  `User_ID` int(11) NOT NULL,
   `nightmode` varchar(5) NOT NULL,
   `show_Badges` tinyint(1) NOT NULL,
-  `favourite_manga_ID` int UNSIGNED DEFAULT NULL,
+  `favourite_manga_ID` int(10) UNSIGNED DEFAULT NULL,
   `show_favourite` enum('Si','No') NOT NULL DEFAULT 'No',
   `show_likes` enum('Si','No') NOT NULL DEFAULT 'No',
   `description` varchar(500) DEFAULT NULL,
   `show_interests` tinyint(1) NOT NULL,
   `show_role` tinyint(1) NOT NULL,
-  `bg_dir` text
+  `bg_dir` text DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -834,7 +945,12 @@ INSERT INTO `userprofile` (`User_ID`, `nightmode`, `show_Badges`, `favourite_man
 (20163, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
 (20164, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
 (20165, 'on', 1, NULL, 'Si', 'Si', '', 1, 0, NULL),
-(20166, 'off', 1, 10012, 'Si', 'Si', '', 1, 0, NULL);
+(20166, 'off', 1, 10012, 'Si', 'Si', '', 1, 0, NULL),
+(20167, 'off', 1, 10017, 'Si', 'Si', '', 1, 0, NULL),
+(20168, 'on', 1, 10041, 'Si', 'Si', '', 1, 0, '../pointshop/dbzwallpaper.png'),
+(20169, 'off', 1, 10000, 'Si', 'Si', 'asdada', 1, 0, '../pointshop/tomokosad.png'),
+(20170, 'off', 1, 10041, 'Si', 'No', 'Hola esta es mi biografia', 1, 0, NULL),
+(20171, 'off', 1, NULL, 'Si', 'Si', '', 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -843,10 +959,10 @@ INSERT INTO `userprofile` (`User_ID`, `nightmode`, `show_Badges`, `favourite_man
 --
 
 CREATE TABLE `userreadmangahistory` (
-  `h_ID` int NOT NULL,
-  `User_ID` int UNSIGNED NOT NULL,
-  `manga_ID` int UNSIGNED NOT NULL,
-  `at_Chapter` smallint UNSIGNED NOT NULL
+  `h_ID` int(11) NOT NULL,
+  `User_ID` int(10) UNSIGNED NOT NULL,
+  `manga_ID` int(10) UNSIGNED NOT NULL,
+  `at_Chapter` smallint(5) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -865,12 +981,26 @@ INSERT INTO `userreadmangahistory` (`h_ID`, `User_ID`, `manga_ID`, `at_Chapter`)
 (13, 20127, 10000, 1),
 (14, 20127, 10006, 7),
 (15, 20135, 10015, 1),
-(16, 20163, 10015, 3),
-(17, 20163, 10016, 2),
+(16, 20163, 10016, 2),
+(17, 20163, 10041, 1),
 (18, 20166, 10017, 2),
 (19, 20166, 10012, 4),
 (20, 20166, 10039, 1),
-(21, 20166, 10005, 1);
+(21, 20166, 10005, 1),
+(22, 20168, 10000, 7),
+(23, 20168, 10013, 1),
+(24, 20168, 10017, 3),
+(25, 20168, 10041, 1),
+(30, 20169, 10044, 1),
+(31, 20163, 10009, 32),
+(32, 20163, 10044, 1),
+(33, 20169, 10046, 1),
+(34, 20169, 10014, 3),
+(35, 20169, 10004, 10),
+(36, 20170, 10000, 1),
+(37, 20171, 10045, 1),
+(38, 20171, 10046, 1),
+(39, 20171, 10041, 1);
 
 -- --------------------------------------------------------
 
@@ -879,7 +1009,7 @@ INSERT INTO `userreadmangahistory` (`h_ID`, `User_ID`, `manga_ID`, `at_Chapter`)
 --
 
 CREATE TABLE `users` (
-  `ID` int NOT NULL,
+  `ID` int(11) NOT NULL,
   `Name` varchar(20) NOT NULL,
   `Email` varchar(64) NOT NULL,
   `Password` varchar(200) NOT NULL,
@@ -887,10 +1017,10 @@ CREATE TABLE `users` (
   `activation_date` datetime NOT NULL,
   `desactivation_date` datetime DEFAULT NULL,
   `reactivation_at` datetime DEFAULT NULL,
-  `moderationRoles_ID` tinyint UNSIGNED NOT NULL DEFAULT '0',
-  `suscriptions_ID` tinyint UNSIGNED NOT NULL,
-  `email_validated` tinyint UNSIGNED NOT NULL,
-  `points` mediumint NOT NULL
+  `moderationRoles_ID` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `suscriptions_ID` tinyint(3) UNSIGNED NOT NULL,
+  `email_validated` tinyint(3) UNSIGNED NOT NULL,
+  `points` mediumint(9) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -908,10 +1038,15 @@ INSERT INTO `users` (`ID`, `Name`, `Email`, `Password`, `profile_pic`, `activati
 (20134, 'kakao1', 'kakao@gmail.com', '$2y$10$CLgv8iQVjnTuvyF4V6MpHefnZHISJyQ4drWqG0PVduhWSzOHAIBA2', '../img/avatar.png', '2022-10-23 02:06:30', NULL, NULL, 1, 0, 0, 100),
 (20135, 'Manuel', 'Manuel@gmail.com', '$2y$10$KPtEeot8je/NR0BsYMeqJeMpVlXdnsQn5CkNxiNYGHzgXCnBl0FY6', '../pointshop/rosa.png', '2022-10-25 11:11:08', NULL, NULL, 0, 0, 0, 98277),
 (20136, 'holaqlalala', 'holaq@gmail.com', '$2y$10$9DN49.QjW7xa1SP.sYMNfO2r42msxfJg4rH1EDsSE0EiBEomu53oy', '../img/avatar.png', '2022-10-28 17:06:31', NULL, NULL, 0, 0, 0, 100),
-(20163, 'admin', 'admin@gmail.com', '$2y$10$pPrC65O8v7Pro8nWfvw2IOKxI/uAfI9DThRy/GU7m99etdei/73mi', '../pointshop/berserk.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 1007587),
+(20163, 'admin', 'admin@gmail.com', '$2y$10$WiJIZhqyVF06Mhc/lzHejOi3Xx3JVf0pQV6gaO0vfJeJwuJKIxawe', '../pointshop/berserk.png', '2022-10-29 17:07:14', NULL, NULL, 0, 0, 0, 1007587),
 (20164, 'ElPako', 'pakito@gmail.com', '$2y$10$gqnwlOobt2AYpf8kD4R4zu5cxdrVEh7.Ce79Juw59R2vJnV/wttfK', '../img/avatar.png', '2022-10-31 11:38:34', NULL, NULL, 0, 0, 0, 99999),
 (20165, 'jjjiiji', 'jiji@gmail.com', '$2y$10$QVeFfL.gxfFox.mpHPxQveMqf5V1zLFj/TRy1/hLd8DPdphxlA4cK', '../img/avatar.png', '2022-11-01 03:03:11', NULL, NULL, 0, 0, 0, 100),
-(20166, 'poooprr', 'pepe@pepe.com', '$2y$10$BmhczkyUlWr9mI8rOkcWjeOWirYOZYX2BJsRWUya8AMveV0AP9LAG', '../pointshop/booba.png', '2024-09-16 05:52:46', NULL, NULL, 0, 0, 0, 0);
+(20166, 'poooprr', 'pepe@pepe.com', '$2y$10$BmhczkyUlWr9mI8rOkcWjeOWirYOZYX2BJsRWUya8AMveV0AP9LAG', '../pointshop/booba.png', '2024-09-16 05:52:46', NULL, NULL, 0, 0, 0, 0),
+(20167, 'asdsada', 'XDDdd@gmail.com', '$2y$10$1Jg79dKQ9/M//hcrS9fjIO.8PP1Ili7O7xeuHXveC2HKpbO1UnCdG', '../img/avatar.png', '2024-11-08 10:51:19', NULL, NULL, 0, 0, 0, 2000),
+(20168, 'sebas', 'sebas@gmail.com', '$2y$10$xj8yZedxbLgk9O1g4w5jSeNei0ckNIBJbT/GqwKFIIj7tq0XT7wB.', '../img/avatar.png', '2024-11-08 10:53:36', NULL, NULL, 0, 0, 0, 1920),
+(20169, 'ExpoSuiza', 'exposuiza@suiza.com', '$2y$10$fS1arxpWtcHyfuOrztgrCegAtjyNbfA4CUxdhituTD0CW1Vo1tAyK', '../pointshop/wacamole.png', '2024-11-08 11:19:00', NULL, NULL, 0, 0, 0, 8387752),
+(20170, 'Hola', 'soiffermuriel@gmail.com', '$2y$10$EENUl4Anp1dXGgAQojH/Wuak.O6uPQQR3nHgvcpVJ8LbqzZUHe4ye', '../pointshop/berserk.png', '2024-11-08 15:37:34', NULL, NULL, 0, 0, 0, 1700),
+(20171, 'administrador', 'eladminreal@gmail.com', '$2y$10$yk7lGtffK7Fd/gSPGtRLq.b6ppPSIBJsudE.ESJN9Y3HNaepQjio6', '../pointshop/Takagi.png', '2024-11-08 15:41:21', NULL, NULL, 1, 0, 0, 1900);
 
 --
 -- Índices para tablas volcadas
@@ -1107,133 +1242,133 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de la tabla `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `c_ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `c_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT de la tabla `itemsshop`
 --
 ALTER TABLE `itemsshop`
-  MODIFY `ID` mediumint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `ID` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `itemtypes`
 --
 ALTER TABLE `itemtypes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `manga`
 --
 ALTER TABLE `manga`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10040;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10048;
 
 --
 -- AUTO_INCREMENT de la tabla `mangachapters`
 --
 ALTER TABLE `mangachapters`
-  MODIFY `ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT de la tabla `mangagenders`
 --
 ALTER TABLE `mangagenders`
-  MODIFY `g_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `g_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT de la tabla `mangagenders_manga`
 --
 ALTER TABLE `mangagenders_manga`
-  MODIFY `mg_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `mg_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `mangalikes`
 --
 ALTER TABLE `mangalikes`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT de la tabla `manga_unique_view`
 --
 ALTER TABLE `manga_unique_view`
-  MODIFY `v_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `v_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=99;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogcomment`
 --
 ALTER TABLE `moderationlogcomment`
-  MODIFY `MC_ID` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `MC_ID` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogmanga`
 --
 ALTER TABLE `moderationlogmanga`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogmangachapters`
 --
 ALTER TABLE `moderationlogmangachapters`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationlogusers`
 --
 ALTER TABLE `moderationlogusers`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `moderationstatus`
 --
 ALTER TABLE `moderationstatus`
-  MODIFY `ID` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `profiles`
 --
 ALTER TABLE `profiles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `rolespermissions`
 --
 ALTER TABLE `rolespermissions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `suscriptions`
 --
 ALTER TABLE `suscriptions`
-  MODIFY `ID` tinyint NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `ID` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `userinventory`
 --
 ALTER TABLE `userinventory`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT de la tabla `userpointhistory`
 --
 ALTER TABLE `userpointhistory`
-  MODIFY `ID` bigint NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` bigint(20) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `userreadmangahistory`
 --
 ALTER TABLE `userreadmangahistory`
-  MODIFY `h_ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `h_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `ID` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20167;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20172;
 
 --
 -- Restricciones para tablas volcadas

@@ -5,6 +5,12 @@
 if (!isset($_GET['type']) || !isset($_GET['page'])) {
 ?><script>
     window.location.href = 'tienda.php?type=all&page=1';
+        if (isMobile.any()) {
+          let cardbody = document.getElementById('cardbody');
+          let card = document.getElementById('card');
+          cardbody.className = "cardbodymobile";
+          card.className = "cardmobile";
+        };
   </script> ?>
 <?php
 }
@@ -65,12 +71,12 @@ $total_pages = ceil($total_rows / $limite);
 foreach ($items as $items) {
 
 ?>
-  <div class="col-sm-4 mb-3 d-flex align-items-stretch">
-    <div class="card box varios">
-       <img src="../pointshop/<?php echo $items['imgcode'] ?>.png" class="card-img-top"  width="100px" height="300px"style="margin-top:0px " alt="image"> 
-      <div class="card-body d-flex flex-column">
-        <h5 class="card-title"  style="margin-top:15px   "><?php echo $items['Name'] ?></h5>
-        <p class="card-text mb-4" style="margin-top:25px   "><?php echo $items['Description'] ?></p>
+  <div class="col-sm-2 mb-5 d-flex align-items-stretch g-4">
+    <div id="card" class="card box varios">
+       <img src="../pointshop/<?php echo $items['imgcode'] ?>.png" class="card-img-top"  width="100px" min-width="100px" height="300px" min-height="300px" style="margin-top:0px " alt="image"> 
+      <div id="cardbody" class="card-body d-flex flex-column">
+        <center><h5 class="card-title"  style=""><?php echo $items['Name'] ?></h5></center>
+        <p class="card-text" ><?php echo $items['Description'] ?></p>
         <?php
         if (isset($_SESSION['datos'])) {
           $sql1 = "SELECT * FROM itemsshop INNER JOIN userinventory ON itemsshop.ID = userinventory.item_ID WHERE userinventory.user_ID =" . $_SESSION['datos']['ID'] . " AND itemsshop.ID =" . $items['ID'] . ";";
@@ -79,9 +85,9 @@ foreach ($items as $items) {
           $row1 = mysqli_fetch_assoc($result1);
           if (isset($row1['user_ID']) && $row1['user_ID'] == $_SESSION['datos']['ID']) {
         ?>
-            <a href="#" class="btn btn-primary disabled" style="margin-top:50px"  ><?php echo "Obtenido" ?></a>
+            <center><a href="#" class="btn btn-primary disabled" style=""  ><?php echo "Obtenido" ?></a></center>
           <?php } else { ?>
-            <a href="comprar.php?itemid=<?php echo $items['ID'] ?>" class="btn btn-primary" style="margin-top:50px"><?php echo $items['Price'] ?> <img src="../img/cattus_coin.png" width="20" height="20"></a>
+            <center><a href="comprar.php?itemid=<?php echo $items['ID'] ?>" class="btn btn-primary"><?php echo $items['Price'] ?> <img src="../img/cattus_coin.png" width="20" height="20"></a></center>
           <?php }
         } else if (isset($_SESSION['datos']) == false) { ?><a href="login.php" class="btn btn-primary mt-auto align-self-"><?php echo $items['Price'] . "<img src='../img/cattus_coin.png' width='20' height='20'></a>";
                                                                                                                                             } ?></a>
@@ -91,3 +97,15 @@ foreach ($items as $items) {
 
 <?php }
 ?>
+<script>
+  if (isMobile.any()) {
+    let cardbodies = document.querySelectorAll('.cardbody');
+    let cards = document.querySelectorAll('.card');
+    cardbodies.forEach(cardbody => {
+      cardbody.className = "cardbodymobile";
+    });
+    cards.forEach(card => {
+      card.className = "cardmobile";
+    });
+  };
+</script>

@@ -176,7 +176,7 @@ if ($row_cnt > 0 || $row_cnt != NULL) {
     }
     foreach ($categorias as $categorias) { ?>
 
-      <a href="../controllers/categorias.php?categoria=<?php echo $categorias['Name']; ?>" type="button" class="btn btn-outline-secondary separado"><i class="bi bi-tag"></i><?php echo $categorias['Name']; ?></a>
+      <a href="../controllers/categorias.php?categoria=<?php echo $categorias['Name']; ?>" type="button" class="btn btn-outline-secondary separado" style="width: 100px;"><?php echo $categorias['Name']; ?></a>
       <?php } ?>
     <!-- Pregunto si inició sesion-->
     

@@ -90,6 +90,8 @@ li {
     font-family: 'Source Sans Pro', sans-serif;
     color: #549fe1;}
                                       /* Index*/
+
+
 a, a:hover, a:focus, a:active {
     text-decoration: none;
     color: inherit;
@@ -133,6 +135,56 @@ div.backside p, h4{
     max-width: 100%;
     overflow: hidden;
 }
+.card-title{
+  margin-top: 12px;
+}
+.card-text{
+  margin-top: 16px;
+}
+a.btn{
+  margin-left: 10px;
+  margin-bottom: auto;
+  bottom: 1em;
+  width: 80%;
+}
+.cardmobile{
+  height: 42vh;
+  border: 1px solid #000000;
+}
+.cardmobile .card-img-top{
+  height: 20vh;
+}
+.cardbodymobile{
+  height: 10vh;
+  border: 1px solid #000000;
+}
+.cardbodymobile .card-text{
+  height: 10vh;
+}
+.cardmobile a.btn{
+ height: 5vh;
+ margin-top: 0px;
+ margin-left: 0px;
+ margin-bottom: auto;
+ bottom: 1em;
+ top: 200px;
+}
+.cardmobile .card-text{
+  height: 10vh;
+  margin-left: 4px;
+  margin-right: 4px;
+  margin-bottom: 0px;
+}
+.cardmobile .card-title{
+  margin-top: 5px;
+  font-size: 16px;
+  height: 5vh;
+}
+.cardmobile .card-text{
+  margin-top: 0px;
+  font-size: 12px;
+}
+
 p.card-text {
     overflow-y: hidden;
     max-height: 70%;
@@ -142,11 +194,7 @@ p.card-text {
     
 }
 
-a.btn{
-    margin-left: 10px;
-    margin-bottom: auto;
-    bottom: 1em;
-}
+
 
                                        /*INTLECTURA*/
 

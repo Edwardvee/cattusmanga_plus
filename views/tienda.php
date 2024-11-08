@@ -57,11 +57,7 @@
         ?>
 
         <div class="container">
-          <div class="row pt-5">
-            <div class="col-12">
-            </div>
-          </div>
-          <div class="row row-cols-2 row-cols-md-3">
+          <div class="row row-cols-2 row-cols-md-3 g-4">
             <?php require_once("../controllers/itemshow.php") ?>
           </div>
         </div>

@@ -60,10 +60,6 @@ if (isset($_GET['capitulo']) == NULL || !isset($_GET['capitulo'])) {
         <p id="pagtext"> Página 1 de <?php echo $count ?></p>
       </center>
 
-      <!--       
-      <div class="anuncio1 mx-auto d-block">
-        <a href="https://www.coca-cola.com.ar/"> <img src="../img/otros/cocacola.png"> </a>
-      </div> -->
 
       <script type="application/javascript">
         lastpage = <?php echo $count ?>;

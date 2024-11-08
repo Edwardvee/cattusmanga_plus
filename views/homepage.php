@@ -43,7 +43,7 @@
   <center><h2>Últimas entradas</h2></center>
 <p class="text-start text-primary"> <a class="btn btn-celeste" href="../controllers/manga.php?manga=<?php echo $randommanga1[0]['ID']; ?>"> Ver un manga aleatorio</a></p>
   <hr>
-  <div class="row row-cols-2 row-cols-md-4">
+  <div class="row row-cols-2 row-cols-md-4 g-4">
     <?php
     require_once "../controllers/mangashomepage.php";
     ?>

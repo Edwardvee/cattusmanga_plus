@@ -14,8 +14,8 @@ foreach ($mangas as $manga) {
   if($manga['desactivation_date'] == NULL){
 ?>
   <div class="col">
-    <div class="card card1" style="width: 14rem; min-width: 221px; min-height:349px;">
-      <img src="../mangas/<?php echo $manga['ID']; ?>/caratula.png" class="card-img-top" style="min-width: 221px; min-height:349px;"onerror="this.src='../img/notfound.png'" alt="<?php echo $manga['title']; ?>">
+    <div class="card card1" style="width: 14rem; min-width: 100px; min-height:300px; height: 320px;">
+      <img src="../mangas/<?php echo $manga['ID']; ?>/caratula.png" class="card-img-top" style="min-width: 100px; min-height:300px; height: 320px;"onerror="this.src='../img/notfound.png'" alt="<?php echo $manga['title']; ?>">
       <a href="../controllers/manga.php?manga=<?php echo $manga['ID']; ?>">
         <div class="backside">
           <div class="card-img-overlay">

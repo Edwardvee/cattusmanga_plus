@@ -21,9 +21,9 @@
       foreach ($resultCategories as $categoria) {
     ?>
         <div class="col-sm-4 col-sm-2 mr-3 mb-3" style="color:orange">
-          <div class="card" style="max-width: 12em">
+          <div class="card categorias" style="width: 14rem; min-width: 100px; ">
             <a href="../controllers/categorias.php?categoria=<?php echo $categoria['Name']; ?>">
-              <img src="../mangas/<?php echo $categoria['image']; ?>/caratula.png" onerror="this.src='../img/notfound.png'" class="card-img-top" alt="Card Image">
+              <img src="../mangas/<?php echo $categoria['image']; ?>/caratula.png" onerror="this.src='../img/notfound.png'" class="card-img-top" style="min-width: 100px; min-height:300px; height: 320px;" alt="Card Image">
               <div class="card-body">
                 <div class="card-title text-center">
                   <p><?php echo htmlspecialchars($categoria['Name']); ?></p>

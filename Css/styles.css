@@ -158,14 +158,14 @@ a.btn{
 }
 .cardmobile{
   height: 42vh;
-  border: 1px solid #000000;
+  border:  #2424244d solid 1px;
 }
 .cardmobile .card-img-top{
   height: 20vh;
 }
 .cardbodymobile{
   height: 10vh;
-  border: 1px solid #000000;
+
 }
 .cardbodymobile .card-text{
   height: 10vh;
@@ -175,6 +175,7 @@ a.btn{
  margin-top: 0px;
  margin-left: 0px;
  margin-bottom: auto;
+ padding: 4px 8px 4px 8px;
  bottom: 1em;
  top: 200px;
 }

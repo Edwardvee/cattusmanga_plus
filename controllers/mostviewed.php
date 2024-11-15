@@ -13,7 +13,7 @@ if (mysqli_num_rows($result_views2) > 0) {
     if($manga['desactivation_date'] == NULL){
   ?>
     <div class="col-sm-4">
-      <div class="card card1" style="width: 14rem; min-width: 100px; min-height:300px; height: 320px;">
+      <div class="card card1" style="width: 14rem; min-width: 100px; min-height:3400px;">
         <img src="../mangas/<?php echo $manga['ID']; ?>/caratula.png" class="card-img-top" style="min-width: 100px; min-height:300px; height: 320px;" onerror="this.src='../img/notfound.png'" alt="<?php echo $manga['title']; ?>">
         <a href="../controllers/manga.php?manga=<?php echo $manga['ID']; ?>">
           <div class="backside">

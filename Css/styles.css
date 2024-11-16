@@ -1,5 +1,5 @@
 :root{
-    --perfilcolor: #6F94BC;
+    --perfilcolor: #94CDFF;
     --color-principal: #549fe1;
   }
 .nav-custom {
@@ -259,7 +259,7 @@ img.mangacover {
     position: sticky;
     padding: 15px;
     width: 100%;
-    background-color: var(--perfilcolor); 
+    background-color: #94CDFF; 
     border-radius: 10px;
     display: inline-block;
     opacity: 0.9;
@@ -283,7 +283,7 @@ button.favbtn {
 
 div.capitulos article {
     font-size: 30px;
-    background-color: #006CA9;
+    background-color: #69B9FF;
     margin: auto;
     margin-bottom: 0.5em;
     padding: 10px;
